@@ -2,20 +2,23 @@
 
 ## Rails
 ### Models
+Review
+Rating
 
 ### Controllers
+* API::ReviewsController
+* API::RatingsController
 
 ### Views
 
 ## Backbone
 ### Models
+* Review
+* Rating
 
 ### Collections
 
 ### Views
-* PostForm
+* ReviewForm
 
 ## Gems/Libraries
-* Filepicker
-* Markdown-js
-* Bootstrap Markdown

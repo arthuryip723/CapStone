@@ -4,8 +4,8 @@
 ### Models
 
 ### Controllers
-Api::BlogsController (search)
-Api::PostsController (search)
+* Api::FriendshipsController
+* Api::BooksController (feed)
 
 ### Views
 
@@ -14,9 +14,8 @@ Api::PostsController (search)
 
 ### Collections
 
+
 ### Views
-* BlogSearchItem
-* SearchShow (composite view, contains BlogsIndex and PostsIndex subviews)
+* FeedsView
 
 ## Gems/Libraries
-

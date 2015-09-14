@@ -1,26 +1,22 @@
 # View Wireframes
 
-## New Session
-![new-session]
+## Book Show
+![book-show]
 
-## Feed Show (landing page)
-![feed-show]
+## Feeds Show
+![feeds-index]
 
-## Blog Show
-![blog-show]
+## Review Form
+![review-form]
 
-## Post Show
-![post-show]
+## Search
+![search]
 
-## Post Form
-![post-form]
+## Shelves
+![shelves]
 
-## Search Results
-![search-results]
-
-[new-session]: ./wireframes/new_session.png
-[feed-show]: ./wireframes/feed_show.png
-[blog-show]: ./wireframes/blog_show.png
-[post-show]: ./wireframes/post_show.png
-[post-form]: ./wireframes/post_form.png
-[search-results]: ./wireframes/search_results.png
+[book-show]: ./wireframes/book_show.jpg
+[feeds-index]: ./wireframes/feeds_index.jpg
+[review-form]: ./wireframes/review_form.jpg
+[search]: ./wireframes/search.jpg
+[shelves]: ./wireframes/shelves.jpg

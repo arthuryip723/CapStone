@@ -4,17 +4,22 @@
 ### Models
 
 ### Controllers
-Api::PostsController (feed)
+* Api::ShelvesController
+* Api::BooksController (search)
 
 ### Views
-posts/feed.json.jbuilder
+books/shelf.json.jbuilder
 
 ## Backbone
 ### Models
+* Shelf
 
 ### Collections
+* Shelves
 
 ### Views
-* FeedShow (composite view, contains PostsIndex subview)
+* MyBooksView (composite view, contains ShelvesIndex and BooksIndex subview)
+* BookSearchItem
+* SearchShow (composite view, contains BlogsIndex and PostsIndex subviews)
 
 ## Gems/Libraries
