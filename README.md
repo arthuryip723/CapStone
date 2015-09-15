@@ -2,7 +2,7 @@
 
 [Heroku link][heroku]
 
-[heroku]: http://flux-capacitr.herokuapp.com
+[heroku]: http://youreads.herokuapp.com
 
 ## Minimum Viable Product
 YouReads is a clone of GoodReads built on Rails and Backbone. Users can:
