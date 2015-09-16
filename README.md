@@ -1,4 +1,4 @@
-# Flux-capacitr
+# YouReads
 
 [Heroku link][heroku]
 
