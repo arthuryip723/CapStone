@@ -1,6 +1,17 @@
 module Api
   class Api::BooksController < ApplicationController
+    def index
+      @books = Book.all.includes(:author)
+      # render json: @books
+    end
+
     def create
+      @book = Book.create(book_params)
+      if @book.save
+        render 'show'
+      else
+        render json: @book.errors.full_messages, status: 422
+      end
     end
 
     def update

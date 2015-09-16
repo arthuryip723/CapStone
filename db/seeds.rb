@@ -13,3 +13,5 @@ b1 = a1.books.create(title: 'The Adventures of Huckleberry Finn')
 b2 = a1.books.create(title: 'The Adventures of Tom Sawyer')
 b3 = a2.books.create(title: 'The Sound and the Fury')
 b4 = a2.books.create(title: 'As I Lay Dying')
+b1.reviews.create(content: 'A good book', user_id: 1);
+b1.reviews.create(content: 'A good book, too', user_id: 2);

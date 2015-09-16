@@ -4,6 +4,8 @@ class User < ActiveRecord::Base
 
   attr_reader :password
 
+  has_many :reviews
+
   # has_many(
   #   :links,
   #   class_name: "Link",

@@ -1,0 +1,11 @@
+<h3>Books Index</h3>
+<ul>
+  <% books.each(function (book) { %>
+    <li><a href="#/books/<%= book.get('id') %>">
+      Title: <%= book.escape('title') %><br>
+      Author: <%= book.author().escape('name') %><br>
+      ISBN: <%= book.escape('isbn') %>
+    </a></li>
+  <% }); %>
+</ul>
+<a href="#/books/new">New Book</a>
