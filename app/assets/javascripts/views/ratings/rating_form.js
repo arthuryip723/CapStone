@@ -1,16 +1,14 @@
-YouReads.Views.ReviewForm = Backbone.View.extend({
-  template: JST['reviews/form'],
+YouReads.Views.RatingForm = Backbone.View.extend({
+  template: JST['ratings/form'],
   tagName: 'form',
   events: {
     'click button': 'submit'
   },
-  initialize: function (options) {
-    this.book = options.book;
-    // The change event is for model, while update is for collection
+  initialize: function () {
     this.listenTo(this.model, 'change', this.render);
   },
   render: function () {
-    this.$el.html(this.template({review: this.model}));
+    this.$el.html(this.template({rating: this.model}));
     return this;
   },
   submit: function (event) {
@@ -19,7 +17,7 @@ YouReads.Views.ReviewForm = Backbone.View.extend({
     var that = this;
     this.model.save(attrs, {
       success: function (model) {
-        that.collection.add(model, {merge: true});
+        // that.collection.add(model, {merge: true});
         Backbone.history.navigate('#/books/' + model.get('book_id'), {trigger: true});
       }
     });

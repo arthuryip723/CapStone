@@ -1,0 +1,13 @@
+<h3>Create A Rating</h3>
+<label for="stars">Stars</label>
+<select name="stars" id="stars">
+  <% [1, 2, 3, 4, 5].forEach(function (stars){ %>
+    <option value="<%= stars %>"
+      <% if (rating.get('stars') == stars) { %>
+        selected
+      <% } %>
+      ><%= stars %></option>
+  <% }); %>
+</select>
+<br><br>
+<button>Submit</button>

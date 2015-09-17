@@ -1,0 +1,14 @@
+<h3>Create A Review</h3>
+<label for="content">Content</label>
+<textarea name="content" id="content"><%= review.get('content') %></textarea><br><br>
+<label for="rating">Rating</label>
+<select name="rating" id="rating">
+  <% [1, 2, 3, 4, 5].forEach(function (stars){ %>
+    <option value="<%= stars %>"
+      <% if (review.get('rating') == stars) { %>
+        selected
+      <% } %>
+      ><%= stars %></option>
+  <% }); %>
+</select>
+<button>Submit</button>

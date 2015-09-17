@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150916211826) do
+ActiveRecord::Schema.define(version: 20150917200636) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -39,14 +39,28 @@ ActiveRecord::Schema.define(version: 20150916211826) do
   create_table "reviews", force: :cascade do |t|
     t.integer  "user_id",    null: false
     t.integer  "book_id",    null: false
-    t.text     "content",    null: false
+    t.text     "content"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.integer  "rating"
   end
 
   add_index "reviews", ["book_id"], name: "index_reviews_on_book_id", using: :btree
   add_index "reviews", ["user_id", "book_id"], name: "index_reviews_on_user_id_and_book_id", unique: true, using: :btree
   add_index "reviews", ["user_id"], name: "index_reviews_on_user_id", using: :btree
+
+  create_table "shelves", force: :cascade do |t|
+    t.integer  "user_id"
+    t.string   "title"
+    t.string   "type"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "shelvings", force: :cascade do |t|
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
 
   create_table "users", force: :cascade do |t|
     t.string   "email",           null: false

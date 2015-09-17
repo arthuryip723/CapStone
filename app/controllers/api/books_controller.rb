@@ -22,6 +22,10 @@ module Api
 
     def show
       @book = Book.find(params[:id])
+      @current_user_review = current_user.reviews.find_by_book_id(params[:id])
+      # @current_user_review = current_user.reviews.find_by_book(@book)
+      # @current_user_rating = current_user.ratings.find_by_book_id(params[:id])
+      # render json: @book
     end
 
     private
