@@ -1,17 +1,17 @@
-YouReads.Views.BookShow = Backbone.CompositeView.extend({
+YourReads.Views.BookShow = Backbone.CompositeView.extend({
   template: JST['books/show'],
   initialize: function () {
     this.listenTo(this.model, 'sync', this.render);
     var reviews = this.model.reviews();
-    var reviewsIndex = new YouReads.Views.ReviewsIndex({collection: reviews});
+    var reviewsIndex = new YourReads.Views.ReviewsIndex({collection: reviews});
     var currentUserReview = this.model.currentUserReview();
-    var reviewForm = new YouReads.Views.ReviewForm({
+    var reviewForm = new YourReads.Views.ReviewForm({
       model: currentUserReview,
       collection: reviews
     });
-    // var rating = new YouReads.Models.Rating({book_id: this.model.get('id')});
+    // var rating = new YourReads.Models.Rating({book_id: this.model.get('id')});
     // var currentUserRating = this.model.currentUserRating();
-    // var ratingForm = new YouReads.Views.RatingForm({
+    // var ratingForm = new YourReads.Views.RatingForm({
     //   model: currentUserRating
     // });
     this.addSubview('#reviews-index', reviewsIndex);

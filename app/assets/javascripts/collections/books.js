@@ -1,5 +1,5 @@
-YouReads.Collections.Books = Backbone.Collection.extend({
-  model: YouReads.Models.Book,
+YourReads.Collections.Books = Backbone.Collection.extend({
+  model: YourReads.Models.Book,
   url: '/api/books',
   getOrFetch: function (id) {
     var model = this.get(id);
@@ -7,7 +7,7 @@ YouReads.Collections.Books = Backbone.Collection.extend({
     if (model) {
       model.fetch();
     } else {
-      model = new YouReads.Models.Book({id: id});
+      model = new YourReads.Models.Book({id: id});
       this.add(model)
       model.fetch({
         error: function (model) {

@@ -1,10 +1,12 @@
-YouReads.Routers.Router = Backbone.Router.extend({
+YourReads.Routers.Router = Backbone.Router.extend({
   routes: {
     '': 'index',
-    'books/new': 'newBook',
-    'books/:id': 'showBook',
-    'authors/new': 'newAuthor',
-    'books/:bookId/reviews/new': 'newReview'
+    'books/new': 'bookNew',
+    'books/:id': 'bookShow',
+    'authors/new': 'authorNew',
+    'books/:bookId/reviews/new': 'reviewNew',
+    'shelves': 'shelvesIndex',
+    'shelves/:id': 'shelfShow'
   },
   initialize: function (options) {
     this.books = options.books;
@@ -12,15 +14,15 @@ YouReads.Routers.Router = Backbone.Router.extend({
   },
   index: function () {
     this.books.fetch();
-    var view = new YouReads.Views.BooksIndex({collection: this.books});
+    var view = new YourReads.Views.BooksIndex({collection: this.books});
     this._swapView(view);
   },
 
-  newBook: function () {
-    var book = new YouReads.Models.Book();
-    var authors = new YouReads.Collections.Authors();
+  bookNew: function () {
+    var book = new YourReads.Models.Book();
+    var authors = new YourReads.Collections.Authors();
     authors.fetch();
-    var view = new YouReads.Views.BookForm({
+    var view = new YourReads.Views.BookForm({
       model: book,
       collection: this.books,
       authors: authors
@@ -28,29 +30,43 @@ YouReads.Routers.Router = Backbone.Router.extend({
     this._swapView(view);
   },
 
-  showBook: function (id) {
+  bookShow: function (id) {
     var book = this.books.getOrFetch(id);
-    var view = new YouReads.Views.BookShow({
+    var view = new YourReads.Views.BookShow({
       model: book
     });
     this._swapView(view);
   },
 
-  newAuthor: function () {
-    var author = new YouReads.Models.Author();
-    var authors = new YouReads.Collections.Authors();
+  authorNew: function () {
+    var author = new YourReads.Models.Author();
+    var authors = new YourReads.Collections.Authors();
     authors.fetch();
-    var view = new YouReads.Views.AuthorForm({
+    var view = new YourReads.Views.AuthorForm({
       model: author,
       collection: authors,
     });
     this._swapView(view);
   },
 
-  newReview: function (bookId) {
+  reviewNew: function (bookId) {
     // var book = this.books.getOrFetch(bookId);
-    var review = new YouReads.Models.Review({bookId: bookId});
-    var view = new YouReads.Views.ReviewForm({model: review});
+    var review = new YourReads.Models.Review({bookId: bookId});
+    var view = new YourReads.Views.ReviewForm({model: review});
+    this._swapView(view);
+  },
+
+  shelvesIndex: function () {
+    var shelves = new YourReads.Collections.Shelves();
+    shelves.fetch();
+    var view = new YourReads.Views.ShelvesIndex({collection: shelves});
+    this._swapView(view);
+  },
+
+  shelfShow: function (id) {
+    var shelf = new YourReads.Models.Shelf({id: id});
+    shelf.fetch();
+    var view = new YourReads.Views.ShelfShow({model: shelf});
     this._swapView(view);
   },
 

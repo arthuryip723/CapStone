@@ -1,0 +1,8 @@
+<h3>Book Shelves</h3>
+<ul>
+  <% shelves.each(function (shelf) { %>
+    <li><a href="#/shelves/<%= shelf.get('id') %>">
+      <%= shelf.get('name') %> (<%= shelf.escape('books_count') %>)
+    </a></li>
+  <% }); %>
+</ul>

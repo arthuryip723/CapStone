@@ -1,11 +1,11 @@
-# YouReads
+# YourReads
 
 [Heroku link][heroku]
 
-[heroku]: http://youreads.herokuapp.com
+[heroku]: http://YourReads.herokuapp.com
 
 ## Minimum Viable Product
-YouReads is a clone of GoodReads built on Rails and Backbone. Users can:
+YourReads is a clone of GoodReads built on Rails and Backbone. Users can:
 
 <!-- This is a Markdown checklist. Use it to keep track of your progress! -->
 

@@ -1,4 +1,4 @@
-YouReads.Views.ReviewForm = Backbone.View.extend({
+YourReads.Views.ReviewForm = Backbone.View.extend({
   template: JST['reviews/form'],
   tagName: 'form',
   events: {

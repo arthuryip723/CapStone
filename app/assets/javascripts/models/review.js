@@ -1,3 +1,3 @@
-YouReads.Models.Review = Backbone.Model.extend({
+YourReads.Models.Review = Backbone.Model.extend({
   urlRoot: '/api/reviews'
 });

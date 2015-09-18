@@ -1,26 +1,26 @@
-YouReads.Models.Book = Backbone.Model.extend({
+YourReads.Models.Book = Backbone.Model.extend({
   urlRoot: '/api/books',
   author: function () {
     if (!this._author) {
-      this._author = new YouReads.Models.Author();
+      this._author = new YourReads.Models.Author();
     }
     return this._author;
   },
   reviews: function () {
     if (!this._reviews) {
-      this._reviews = new YouReads.Collections.Reviews();
+      this._reviews = new YourReads.Collections.Reviews();
     }
     return this._reviews;
   },
   currentUserReview: function () {
     if (!this._currentUserReview) {
-      this._currentUserReview = new YouReads.Models.Review({book_id: this.get('id')});
+      this._currentUserReview = new YourReads.Models.Review({book_id: this.get('id')});
     }
     return this._currentUserReview;
   },
   // currentUserRating: function () {
   //   if (!this._currentUserRating) {
-  //     this._currentUserRating = new YouReads.Models.Rating();
+  //     this._currentUserRating = new YourReads.Models.Rating();
   //   }
   //   return this._currentUserRating;
   // },

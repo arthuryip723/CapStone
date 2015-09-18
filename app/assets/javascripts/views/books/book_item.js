@@ -1,4 +1,4 @@
-YouReads.Views.BookItem = Backbone.View.extend({
+YourReads.Views.BookItem = Backbone.View.extend({
   template: JST['books/item'],
   // tagName: 'li',
   initialize: function () {

@@ -1,4 +1,4 @@
-YouReads.Views.AuthorForm = Backbone.View.extend({
+YourReads.Views.AuthorForm = Backbone.View.extend({
   template: JST['authors/form'],
   tagName: 'form',
   events: {

@@ -1,4 +1,4 @@
-YouReads.Collections.Authors = Backbone.Collection.extend({
+YourReads.Collections.Authors = Backbone.Collection.extend({
   url: '/api/authors',
-  model: YouReads.Models.Author,
+  model: YourReads.Models.Author,
 });

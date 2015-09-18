@@ -1,3 +1,3 @@
-YouReads.Models.Author = Backbone.Model.extend({
+YourReads.Models.Author = Backbone.Model.extend({
   urlRoot: '/api/authors',
 });

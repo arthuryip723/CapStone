@@ -5,6 +5,7 @@ class User < ActiveRecord::Base
   attr_reader :password
 
   has_many :reviews
+  has_many :shelves
 
   # has_many(
   #   :links,

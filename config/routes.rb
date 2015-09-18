@@ -8,7 +8,8 @@ Rails.application.routes.draw do
     resources :books, except: [:new, :edit]
     resources :authors, except: [:new, :edit]
     resources :reviews, except: [:new, :edit]
-    resources :ratings, except: [:new, :edit]
+    resources :shelves, except: [:new, :edit]
+    # resources :ratings, except: [:new, :edit]
     # resources :items
     # resources :board_memberships
     # resources :card_assignments

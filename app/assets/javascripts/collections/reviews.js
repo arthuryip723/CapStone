@@ -1,4 +1,4 @@
-YouReads.Collections.Reviews = Backbone.Collection.extend({
-  model: YouReads.Models.Review,
+YourReads.Collections.Reviews = Backbone.Collection.extend({
+  model: YourReads.Models.Review,
   url: '/api/reviews'
 });

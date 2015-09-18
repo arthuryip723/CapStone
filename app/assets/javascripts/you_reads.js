@@ -1,12 +1,12 @@
-window.YouReads = {
+window.YourReads = {
   Models: {},
   Collections: {},
   Views: {},
   Routers: {},
   initialize: function() {
     // alert('Hello from Backbone!');
-    var books = new YouReads.Collections.Books();
-    new YouReads.Routers.Router({
+    var books = new YourReads.Collections.Books();
+    new YourReads.Routers.Router({
       $rootEl: $('#main'),
       books: books
     });
@@ -15,5 +15,5 @@ window.YouReads = {
 };
 
 // $(document).ready(function(){
-//   YouReads.initialize();
+//   YourReads.initialize();
 // });

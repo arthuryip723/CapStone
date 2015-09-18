@@ -1,4 +1,4 @@
-YouReads.Views.ReviewsIndex = Backbone.View.extend({
+YourReads.Views.ReviewsIndex = Backbone.View.extend({
   template: JST['reviews/index'],
   // tagName: 'ul',
   initialize: function () {

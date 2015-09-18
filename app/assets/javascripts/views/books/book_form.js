@@ -1,4 +1,4 @@
-YouReads.Views.BookForm = Backbone.View.extend({
+YourReads.Views.BookForm = Backbone.View.extend({
   template: JST['books/form'],
   tagName: 'form',
   events: {
