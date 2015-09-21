@@ -10,6 +10,8 @@ YourReads.Views.ReviewForm = Backbone.View.extend({
     this.listenTo(this.model, 'change', this.render);
   },
   render: function () {
+    // alert('here')
+    // debugger
     this.$el.html(this.template({review: this.model}));
     return this;
   },

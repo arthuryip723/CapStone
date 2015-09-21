@@ -1,4 +1,23 @@
 <div class="backdrop">
-  <div id="main"></div>
+  <header class="header">
+    <nav class="header-nav group">
+      <h1 class="header-logo"><a href="#">YourReads</a></h1>
+      <div class="header-user-info group">
+        <% if signed_in? %>
+          Welcome, <%= current_user.email %>!
+          <%= button_to "Sign Out", session_url, method: :delete %>
+        <% else %>
+          <%= link_to "Sign In", new_session_url %>
+          <%= link_to "Sign Up", new_user_url %>
+        <% end %>
+      </div>
+      <ul class="header-list group">
+        <li><a href="#">Home</a></li>
+        <li><a href="#shelves">My Books</a></li>
+        <li><a href="#">Friends</a></li>
+      </ul>
+    </nav>
+  </header>
+  <div id="main" class="content group"></div>
 </div>
 <script>$(YourReads.initialize);</script>

@@ -1,6 +1,9 @@
 <h4>Reviews</h4>
 <ul>
 <% reviews.each(function (review){ %>
-  <li><%= review.get('content') %></li>
+  <li><%= review.get('content') %>
+    <%= review.get('rating') %>
+    <%= review.user().get('email') %>
+  </li>
 <% }); %>
 </ul>

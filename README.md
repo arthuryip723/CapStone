@@ -71,6 +71,7 @@ the new route. Ultimately, this will be the page users see after logging in.
 [Details][phase-five]
 
 ### Bonus Features (TBD)
+- [ ] Pagination
 - [ ] User reading plan and summary
 - [ ] Book categories
 - [ ] Book recommendations

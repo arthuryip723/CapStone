@@ -5,6 +5,7 @@ YourReads.Routers.Router = Backbone.Router.extend({
     'books/:id': 'bookShow',
     'authors/new': 'authorNew',
     'books/:bookId/reviews/new': 'reviewNew',
+    'books/:bookId/reviews/edit': 'reviewEdit',
     'shelves': 'shelvesIndex',
     'shelves/:id': 'shelfShow'
   },
@@ -67,6 +68,12 @@ YourReads.Routers.Router = Backbone.Router.extend({
     var shelf = new YourReads.Models.Shelf({id: id});
     shelf.fetch();
     var view = new YourReads.Views.ShelfShow({model: shelf});
+    this._swapView(view);
+  },
+
+  reviewEdit: function (bookId) {
+    var book = this.books.getOrFetch(bookId);
+    var view = new YourReads.Views.ReviewEdit({model: book});
     this._swapView(view);
   },
 

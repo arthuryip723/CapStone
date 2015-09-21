@@ -31,7 +31,7 @@ YourReads.Models.Book = Backbone.Model.extend({
       delete response.comments;
     }
     if (response.reviews) {
-      this.reviews().set(response.reviews);
+      this.reviews().set(response.reviews, {parse: true});
       delete response.reviews;
     }
     if (response.current_user_review) {

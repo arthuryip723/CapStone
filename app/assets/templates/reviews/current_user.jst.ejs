@@ -1,0 +1,7 @@
+<h4>My Review</h4>
+<div>
+<%= review.get('content') %>
+  <%= review.get('rating') %>
+  <%= review.user().get('email') %>
+</div>
+<a href="#/books/<%= review.get('book_id') %>/reviews/edit">Edit My Review</a>
