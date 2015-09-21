@@ -1,14 +1,16 @@
-<h3>Books Index</h3>
+<h3>All Books</h3>
 <ul class="book-list">
   <% books.each(function (book) { %>
     <li class="book-list-item group">
       <a href="#/books/<%= book.get('id') %>" class="book-cover"><img src="/assets/cover.jpg"></a>
-      <a href="#/books/<%= book.get('id') %>" class="book-content">
-        Title: <%= book.escape('title') %><br>
-        Author: <%= book.author().escape('name') %><br>
-        ISBN: <%= book.escape('isbn') %>
-      </a>
+      <div class="book-content">
+        <a href="#/books/<%= book.get('id') %>" class="book-title" >
+          <%= book.escape('title') %>
+        </a>
+        by <a href="#/authors/<%= book.author().get('id') %>" class="author-name"><%= book.author().escape('name') %></a><br>
+        <%= book.escape('average_rating') ? book.escape('average_rating') : 0 %> stars
+      </div>
     </li>
   <% }); %>
 </ul>
-<a href="#/books/new">New Book</a>
+<a href="#/books/new" class="content-button">New Book</a> <a href="#/authors/new" class="content-button">New Author</a>

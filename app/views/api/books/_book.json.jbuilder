@@ -6,7 +6,9 @@
 # json.author book.author
 
 json.extract!(book, :id, :title, :author_id, :isbn, :average_rating)
-json.author book.author
+if include_author
+  json.author book.author
+end
 if include_reviews
   # json.reviews book.reviews
   json.reviews do

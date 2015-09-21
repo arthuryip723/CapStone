@@ -5,7 +5,11 @@ Rails.application.routes.draw do
   resources :users, only: [:new, :create, :show]
 
   namespace :api, defaults: { format: :json } do
-    resources :books, except: [:new, :edit]
+    resources :books, except: [:new, :edit] do
+      collection do
+        get 'my_books'
+      end
+    end
     resources :authors, except: [:new, :edit]
     resources :reviews, except: [:new, :edit]
     resources :shelves, except: [:new, :edit]

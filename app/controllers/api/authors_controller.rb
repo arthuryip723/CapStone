@@ -16,6 +16,7 @@ module Api
 
     def show
       @author = Author.find(params[:id])
+      # show with authored book
     end
 
     private

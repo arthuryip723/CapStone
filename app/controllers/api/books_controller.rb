@@ -28,6 +28,11 @@ module Api
       # render json: @book
     end
 
+    def my_books
+      @books = current_user.books
+      render :index
+    end
+
     private
     def book_params
       params.require(:book).permit(:title, :author_id, :isbn)

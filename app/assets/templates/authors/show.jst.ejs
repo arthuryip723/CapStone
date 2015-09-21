@@ -1,0 +1,6 @@
+<%= author.escape('name') %>
+<ul>
+  <% author.books().each(function (book) { %>
+    <li><%= book.escape('title') %></li>
+  <% }); %>
+</ul>
