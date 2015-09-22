@@ -178,6 +178,12 @@ img {
   display: block;
   float: left;
   margin: 0 0 0 20px;
+  width: 480px;
+}
+
+.book-shelf {
+  float: left;
+  margin: 0 0 0 20px;
 }
 
 .book-title {

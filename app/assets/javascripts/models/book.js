@@ -25,6 +25,7 @@ YourReads.Models.Book = Backbone.Model.extend({
   //   return this._currentUserRating;
   // },
   parse: function (response) {
+    // alert("parsing book");
     if (response.author) {
       this.author().set(response.author);
       // console.log(this.author());

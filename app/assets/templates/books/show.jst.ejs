@@ -4,7 +4,7 @@
   </div>
   <div class="book-info">
       <h1 class="book-title-primary"><%= book.escape('title') %></h1>
-      <div><a href="#/authors/<%= book.author().get('id') %>" class="author-name">by: <%= book.author().escape('name') %></a></div>
+      <div>by: <a href="#/authors/<%= book.author().get('id') %>" class="author-name"><%= book.author().escape('name') %></a></div>
       <div>Average Rating: <%= book.get('average_rating') %></div>
     <!-- <div id="review-form">
     </div> -->

@@ -18,6 +18,7 @@
           <a href="#/books/<%= book.get('id') %>" class="book-title" >
             <%= book.escape('title') %>
           </a>
+          by: <a href="#/authors/<%= book.author().get('id') %>"><%= book.author().escape('name') %></a><br>
 
           <%= book.escape('average_rating') ? book.escape('average_rating') : 0 %> stars
         </div>

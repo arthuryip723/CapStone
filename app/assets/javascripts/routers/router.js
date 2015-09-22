@@ -8,7 +8,7 @@ YourReads.Routers.Router = Backbone.Router.extend({
     'books/:bookId/reviews/new': 'reviewNew',
     'books/:bookId/reviews/edit': 'reviewEdit',
     'shelves': 'shelvesIndex',
-    'shelves/:id': 'shelfShow'
+    'shelves/:id': 'shelfDetail'
   },
   initialize: function (options) {
     this.books = options.books;
@@ -67,18 +67,31 @@ YourReads.Routers.Router = Backbone.Router.extend({
     this._swapView(view);
   },
 
-  shelvesIndex: function () {
+  shelvesIndex: function (callback) {
     var shelves = new YourReads.Collections.Shelves();
+    var view = new YourReads.Views.ShelvesIndex({collection: shelves, callback: callback});
+    this._shelveIndex = view;
     shelves.fetch();
-    var view = new YourReads.Views.ShelvesIndex({collection: shelves});
     this._swapView(view);
   },
 
-  shelfShow: function (id) {
+  shelfDetail: function (id) {
+    if (this._shelveIndex === undefined) {
+      this.shelvesIndex(this.shelfDetail.bind(this, id));
+      return;
+    }
+    // alert('shelfdetail')
     var shelf = new YourReads.Models.Shelf({id: id});
+    var view = new YourReads.Views.ShelfDetail({model: shelf});
     shelf.fetch();
-    var view = new YourReads.Views.ShelfShow({model: shelf});
-    this._swapView(view);
+    // this._swapView(view);
+    // debugger
+    $('.shelf-detail').html(view.render().$el);
+    // debugger
+    // $('.shelf-detail').html("hello");
+    // debugger
+    // $('#main').append(view.$el);
+    // console.log(view.$el);
   },
 
   reviewEdit: function (bookId) {

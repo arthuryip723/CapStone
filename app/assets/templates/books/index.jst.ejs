@@ -10,6 +10,12 @@
         by <a href="#/authors/<%= book.author().get('id') %>" class="author-name"><%= book.author().escape('name') %></a><br>
         <%= book.escape('average_rating') ? book.escape('average_rating') : 0 %> stars
       </div>
+      <div class="book-shelf">
+        <select>
+          <option>1</option>
+          <option>2</option>
+        </select>
+      </div>
     </li>
   <% }); %>
 </ul>

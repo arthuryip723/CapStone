@@ -2,7 +2,16 @@
 <ul>
   <% shelves.each(function (shelf) { %>
     <li><a href="#/shelves/<%= shelf.get('id') %>">
-      <%= shelf.get('name') %> (<%= shelf.escape('books_count') %>)
+      <%= shelf.escape('name') %> (<%= shelf.get('books_count') %>)
     </a></li>
   <% }); %>
 </ul>
+<h3>Books</h3>
+<div class="shelf-detail">
+  All My Books
+  <ul>
+    <% books.each(function (book) { %>
+      <li><%= book.escape('title') %></li>
+    <% }); %>
+  </ul>
+</div>

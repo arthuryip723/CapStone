@@ -12,7 +12,9 @@ Rails.application.routes.draw do
     end
     resources :authors, except: [:new, :edit]
     resources :reviews, except: [:new, :edit]
-    resources :shelves, except: [:new, :edit]
+    resources :shelves, except: [:new, :edit] do
+      
+    end
     # resources :ratings, except: [:new, :edit]
     # resources :items
     # resources :board_memberships

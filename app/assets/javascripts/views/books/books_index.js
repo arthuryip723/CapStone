@@ -8,4 +8,5 @@ YourReads.Views.BooksIndex = Backbone.View.extend({
     this.$el.html(this.template({books: this.collection}));
     return this;
   }
+  // Need to use composite view here to add book list-item into the view
 });
