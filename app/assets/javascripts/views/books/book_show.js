@@ -1,5 +1,6 @@
 YourReads.Views.BookShow = Backbone.CompositeView.extend({
   template: JST['books/show'],
+  className: 'book-show',
   initialize: function () {
     this.listenTo(this.model, 'sync', this.render);
     var reviews = this.model.reviews();

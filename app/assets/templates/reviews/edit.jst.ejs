@@ -1,3 +1,15 @@
-<h1><%= book.escape('title') %></h1>
+<!-- <h2><%= book.escape('title') %></h2> -->
+<!-- <div>by <a href="#/authors/<%= book.author().get('id') %>"><%= book.author().escape('name') %></a>
+</div> -->
+<div class="review-edit-book group">
+  <a href="#/books/<%= book.get('id') %>" class="book-cover"><img src="/assets/cover.jpg"></a>
+  <div class="book-content">
+    <a href="#/books/<%= book.get('id') %>" class="book-title" >
+      <%= book.escape('title') %>
+    </a>
+    by <a href="#/authors/<%= book.author().get('id') %>" class="author-name"><%= book.author().escape('name') %></a><br>
+    <%= book.escape('average_rating') ? book.escape('average_rating') : 0 %> stars
+  </div>
+</div>
 
 <div id="review-form"></div>

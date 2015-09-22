@@ -1,6 +1,7 @@
 YourReads.Views.ReviewForm = Backbone.View.extend({
   template: JST['reviews/form'],
   tagName: 'form',
+  className: 'review-form',
   events: {
     'click button': 'submit'
   },

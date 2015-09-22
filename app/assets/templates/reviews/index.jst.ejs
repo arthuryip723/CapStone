@@ -1,9 +1,13 @@
-<h4>Reviews</h4>
-<ul>
+<h2>Reviews</h2>
+<ul class="review-list">
 <% reviews.each(function (review){ %>
-  <li><%= review.get('content') %>
-    <%= review.get('rating') %>
-    <%= review.user().get('email') %>
+  <li class="review-list-item group">
+    <a href="#" class="user-thumb"><img src="assets/avatar.jpg"></a>
+    <div class="review-content">
+      <div class="review-rating"><a href="#" class="reviewer-email"><%= review.user().get('email') %></a>
+      rated it <%= review.get('rating') %> stars</div>
+      <p><%= review.get('content') %></p>
+    </div>
   </li>
 <% }); %>
 </ul>

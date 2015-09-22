@@ -1,6 +1,27 @@
-<%= author.escape('name') %>
-<ul>
-  <% author.books().each(function (book) { %>
-    <li><%= book.escape('title') %></li>
-  <% }); %>
-</ul>
+<div class="author-thumb">
+  <img src="assets/author.jpg">
+</div>
+<div class="author-and-books group">
+  <div class="author-info">
+    <h1><%= author.escape('name') %></h1>
+    <p>
+      introduction introduction introduction introduction introduction introduction introduction introduction introduction introduction introduction introduction
+    </p>
+  </div>
+  <h2><%= author.escape('name') %>'s Books</h2>
+  <ul>
+    <% author.books().each(function (book) { %>
+      <!-- <li><%= book.escape('title') %></li> -->
+      <li class="book-list-item group">
+        <a href="#/books/<%= book.get('id') %>" class="book-cover"><img src="/assets/cover.jpg"></a>
+        <div class="book-content">
+          <a href="#/books/<%= book.get('id') %>" class="book-title" >
+            <%= book.escape('title') %>
+          </a>
+
+          <%= book.escape('average_rating') ? book.escape('average_rating') : 0 %> stars
+        </div>
+      </li>
+    <% }); %>
+  </ul>
+</div>
