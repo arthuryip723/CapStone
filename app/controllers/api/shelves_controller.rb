@@ -1,7 +1,7 @@
 module Api
   class ShelvesController < ApplicationController
     def index
-      @shelves = current_user.shelves.includes(:books)
+      @shelves = current_user.shelves.includes(:shelvings, :books)
     end
 
     def show

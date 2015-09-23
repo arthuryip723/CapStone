@@ -7,6 +7,7 @@ class User < ActiveRecord::Base
   has_many :reviews
   has_many :shelves
   has_many :books, -> { distinct }, through: :shelves
+  has_many :shelvings, through: :shelves
 
   # has_many(
   #   :links,

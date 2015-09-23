@@ -12,12 +12,19 @@ YourReads.Collections.Shelves = Backbone.Collection.extend({
   //   });
   //   return this._books;
   // },
-  books: function () {
-    books = new YourReads.Collections.Books();
+  // books: function () {
+  //   books = new YourReads.Collections.Books();
+  //   this.each(function (shelf) {
+  //     books.add(shelf.books().models, {merge: true});
+  //   });
+  //   return books;
+  // },
+  shelvings: function () {
+    shelvings = new YourReads.Collections.Shelvings();
     this.each(function (shelf) {
-      books.add(shelf.books().models, {merge: true});
+      shelvings.add(shelf.shelvings().models);
     });
-    return books;
+    return shelvings;
   },
   getOrFetch: function(id) {
     var collection = this;

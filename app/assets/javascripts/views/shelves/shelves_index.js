@@ -3,7 +3,7 @@ YourReads.Views.ShelvesIndex = Backbone.CompositeView.extend({
   initialize: function (options) {
     // this.books = this.collection.books();
     // this.listenTo(this.collection, 'sync', this.addAllShelf);
-    this.listenTo(this.collection, 'sync', this.render);
+    this.listenTo(this.collection, 'sync update', this.render);
     // this.listenTo(this.collection, 'sync', this.mysync);
     this.callback = options.callback;
     // debugger
@@ -17,7 +17,8 @@ YourReads.Views.ShelvesIndex = Backbone.CompositeView.extend({
   //   alert('sync');
   // },
   render: function () {
-    this.$el.html(this.template({shelves: this.collection, books: this.collection.books()}));
+    // console.log("render shelves index");
+    this.$el.html(this.template({shelves: this.collection, shelvings: this.collection.shelvings()}));
     this.attachSubviews();
     // this.callback && this.callback();
     return this;

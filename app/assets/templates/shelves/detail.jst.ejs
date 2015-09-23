@@ -1,8 +1,17 @@
 <%= shelf ? shelf.get('name') : 'All My Books' %>
 <ul>
-  <% books.each(function (book) { %>
+  <% shelvings.each(function (shelving) { %>
     <li>
-      <%= book.get('title') %>
+      <%= shelving.book().escape('title') %>
+      <select data-shelving-id="<%= shelving.get('id') %>" data-shelf-id="<%= shelving.get('shelf_id') %>">
+        <% shelves.each(function (shelf) { %>
+          <option value="<%= shelf.get('id') %>"
+            <% if (shelving.get('shelf_id') == shelf.get('id')) { %>
+              selected
+            <% } %>
+            ><%= shelf.escape('name') %></option>
+        <% }); %>
+      </select>
     </li>
   <% }) %>
 </ul>

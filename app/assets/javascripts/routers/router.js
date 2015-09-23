@@ -84,7 +84,7 @@ YourReads.Routers.Router = Backbone.Router.extend({
     }
     // var shelf = new YourReads.Models.Shelf({id: id});
     var shelf = this._shelves.getOrFetch(id);
-    var view = new YourReads.Views.ShelfDetail({model: shelf});
+    var view = new YourReads.Views.ShelfDetail({model: shelf, collection: this._shelves});
     this._shelveIndex.removeAllSubviews();
     this._shelveIndex.addSubview('.shelf-detail', view);
     // shelf.fetch();
