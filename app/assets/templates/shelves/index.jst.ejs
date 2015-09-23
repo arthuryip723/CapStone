@@ -1,12 +1,27 @@
+<div style="float:left;">
 <h3>Book Shelves</h3>
 <ul>
-  <li><a href="#/shelves/all">All (<%= shelves.shelvings().length %>)</a></li>
-  <% shelves.each(function (shelf) { %>
+  <li><a href="#/shelves/all">All (<%= shelves.books().length %>)</a></li>
+  <% shelves.defaultShelves().each(function (shelf) { %>
     <li><a href="#/shelves/<%= shelf.get('id') %>">
-      <%= shelf.escape('name') %> (<%= shelf.shelvings().length %>)
+      <%= shelf.escape('name') %> (<%= shelf.books().length %>)
+    </a></li>
+  <% }); %>
+  <li>-----------------</li>
+  <% shelves.customShelves().each(function (shelf) { %>
+    <li><a href="#/shelves/<%= shelf.get('id') %>">
+      <%= shelf.escape('name') %> (<%= shelf.books().length %>)
     </a></li>
   <% }); %>
 </ul>
+<br>
+<form style="border:1px solid;width: 120px;">
+<h2>Add A Shelf</h2>
+<label for="name">Name</label><br>
+<input id="name" name="name" type="text" style="border:1px solid;width: 100px;"><br>
+<button style="border:1px solid;">Submit</button>
+</form>
+</div>
 <h3>Books</h3>
 <div class="shelf-detail">
 </div>

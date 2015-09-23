@@ -14,10 +14,12 @@ YourReads.Routers.Router = Backbone.Router.extend({
   initialize: function (options) {
     this.books = options.books;
     this.$rootEl = options.$rootEl;
+    this._shelves = new YourReads.Collections.Shelves();
+    this._shelves.fetch();
   },
   index: function () {
     this.books.fetch();
-    var view = new YourReads.Views.BooksIndex({collection: this.books});
+    var view = new YourReads.Views.BooksIndex({collection: this.books, shelves: this._shelves});
     this._swapView(view);
   },
 

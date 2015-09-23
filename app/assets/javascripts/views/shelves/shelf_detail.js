@@ -7,26 +7,62 @@ YourReads.Views.ShelfDetail = Backbone.View.extend({
     this.listenTo(this.collection, 'update', this.render);
   },
   events: {
-    'change select': 'moveToShelf'
+    'change select': 'moveToShelf',
+    'change :checkbox': 'toggleShelf'
   },
   moveToShelf: function (event) {
     var $select = $(event.currentTarget);
-    // console.log($select.data('book-id'));
-    // get the shelf the model is in
-    // var shelf =
-    var fromShelf = this.collection.get($select.data('shelf-id'));
-    var shelving = fromShelf.shelvings().get($select.data('shelving-id'));
+
+    // var fromShelf = this.collection.get($select.data('shelf-id'));
+    // var shelving = fromShelf.shelvings().get($select.data('shelving-id'));
+    // var toShelfId = $select.val();
+    // var toShelf = this.collection.get(toShelfId);
+    // var that = this;
+    // shelving.save({shelf_id: toShelfId}, {
+    //   success: function (model) {
+    //     fromShelf.shelvings().remove(model);
+    //     toShelf.shelvings().add(model);
+    //     that.collection.trigger('update', that.collection);
+    //   }
+    // });
+    // debugger
+    var that = this;
+    var shelving = this.collection.defaultShelves().shelvings().findWhere({book_id: $select.data('book-id')});
+    var fromShelf = this.collection.get(shelving.get('shelf_id'));
     var toShelfId = $select.val();
     var toShelf = this.collection.get(toShelfId);
-    var that = this
     shelving.save({shelf_id: toShelfId}, {
       success: function (model) {
         fromShelf.shelvings().remove(model);
         toShelf.shelvings().add(model);
         that.collection.trigger('update', that.collection);
-        // console.log('shelf changed');
       }
     });
+  },
+  toggleShelf: function (event) {
+    var that = this;
+    var $checkbox = $(event.currentTarget);
+    var shelfId = $checkbox.data('shelf-id')
+    var shelf = this.collection.get(shelfId);
+    var bookId = $checkbox.data('book-id');
+    if ($checkbox.is(':checked')) {
+      var shelving = new YourReads.Models.Shelving({ book_id: bookId, shelf_id: shelfId });
+      shelving.save({}, {
+        success: function (model) {
+          // debugger
+          shelf.shelvings().add(model);
+          that.collection.trigger('update', that.collection);
+        }
+      });
+    } else {
+      var shelving = shelf.shelvings().findWhere({book_id: bookId});
+      shelving.destroy({
+        success: function (model) {
+          shelf.shelvings().remove(model);
+          that.collection.trigger('update', that.collection);
+        }
+      });
+    }
   },
   render: function () {
     // var template = null;
@@ -34,14 +70,14 @@ YourReads.Views.ShelfDetail = Backbone.View.extend({
       this.$el.html(this.template({
         shelf: this.model,
         // books: this.model.books(),
-        shelvings: this.model.shelvings(),
+        books: this.model.books(),
         shelves: this.collection
       }));
     } else{
       this.$el.html(this.template({
         shelf: null,
         // books: this.collection.books(),
-        shelvings: this.collection.shelvings(),
+        books: this.collection.books(),
         shelves: this.collection
       }));
     }

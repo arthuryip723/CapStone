@@ -1,4 +1,4 @@
-json.extract! shelf, :id, :user_id, :name, :category, :books_count
+json.extract! shelf, :id, :user_id, :name, :category, :books_count, :custom
 # json.books shelf.books
 json.shelvings do
   json.array! shelf.shelvings do |shelving|

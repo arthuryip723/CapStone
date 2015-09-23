@@ -16,9 +16,25 @@ YourReads.Views.ShelvesIndex = Backbone.CompositeView.extend({
   // mysync: function () {
   //   alert('sync');
   // },
+  events: {
+    'submit form': 'createShelf'
+  },
+  
+  createShelf: function (event) {
+    event.preventDefault();
+    var $form = $(event.currentTarget);
+    var data = $form.serializeJSON();
+    var shelf = new YourReads.Models.Shelf();
+    var that = this;
+    shelf.save(data, {
+      success: function (model) {
+        that.collection.add(model);
+      }
+    });
+  },
   render: function () {
     // console.log("render shelves index");
-    this.$el.html(this.template({shelves: this.collection, shelvings: this.collection.shelvings()}));
+    this.$el.html(this.template({shelves: this.collection, books: this.collection.books()}));
     this.attachSubviews();
     // this.callback && this.callback();
     return this;

@@ -221,6 +221,17 @@ textarea {
 /*.content-button {
 }*/
 
+.demo-login-form{
+  margin: 20px auto;
+  width: 200px;
+  display: block;
+}
+
+.demo-login-form button {
+  background: yellow;
+  padding: 10px 20px;
+}
+
 /* Signin Form */
 .signup-form,
 .signin-form {

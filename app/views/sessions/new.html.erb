@@ -18,6 +18,12 @@
   <!-- <input type="submit" value="Sign In"> -->
   <br>
   <button>Sign In</button>
-  <h3>Demo Account: ripe@gmail.com/password</h3>
+  <!-- <h3>Demo Account: ripe@gmail.com/password</h3> -->
+</form>
+<form action="<%= session_url %>" method="post" class="demo-login-form">
+  <%= auth_token_input %>
+  <input id="email" type="hidden" name="user[email]" value="ripe@gmail.com">
+  <input id="password" type="hidden" name="user[password]" value="password">
+  <button>Demo Login</button>
 </form>
 <!-- <img src="<%= asset_path("cover.jpg") %>"> -->

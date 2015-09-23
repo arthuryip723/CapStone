@@ -20,9 +20,23 @@ YourReads.Collections.Shelves = Backbone.Collection.extend({
   //   return books;
   // },
   shelvings: function () {
-    shelvings = new YourReads.Collections.Shelvings();
+    var shelvings = new YourReads.Collections.Shelvings();
     this.each(function (shelf) {
       shelvings.add(shelf.shelvings().models);
+    });
+    return shelvings;
+  },
+  books: function () {
+    var books = new YourReads.Collections.Books();
+    this.shelvings().each(function (shelving) {
+      books.add(shelving.book());
+    });
+    return books;
+  },
+  shelvings: function () {
+    shelvings = new YourReads.Collections.Shelvings();
+    this.each(function (shelf) {
+      shelvings.add(shelf.shelvings().models, {merge: true});
     });
     return shelvings;
   },
@@ -42,6 +56,23 @@ YourReads.Collections.Shelves = Backbone.Collection.extend({
 
     return widget;
   },
+  defaultShelves: function () {
+    var shelves = new YourReads.Collections.Shelves();
+    this.where({custom: false}).forEach(function (shelf) {
+      // console.log(shelf.get('custom'))
+      shelves.add(shelf);
+    });
+    return shelves;
+  },
+  customShelves: function () {
+    // return null;
+    var shelves = new YourReads.Collections.Shelves();
+    this.where({custom: true}).forEach(function (shelf) {
+      // console.log(shelf.get('custom'))
+      shelves.add(shelf);
+    });
+    return shelves;
+  }
   // books: function () {
   //   if (!this._books) {
   //     this._books = new YourReads.Collections.Books();

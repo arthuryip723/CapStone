@@ -5,4 +5,8 @@ class Shelf < ActiveRecord::Base
   def books_count
     self.books.count
   end
+
+  def custom
+    self.category == 'custom'
+  end
 end

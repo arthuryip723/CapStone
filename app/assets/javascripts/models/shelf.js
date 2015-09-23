@@ -19,6 +19,13 @@ YourReads.Models.Shelf = Backbone.Model.extend({
     }
     return this._shelvings;
   },
+  books: function () {
+    var books = new YourReads.Collections.Books();
+    this.shelvings().each(function (shelving) {
+      books.add(shelving.book());
+    });
+    return books;
+  },
   parse: function (response) {
     if (response.shelvings) {
       this.shelvings().set(response.shelvings, {parse: true});

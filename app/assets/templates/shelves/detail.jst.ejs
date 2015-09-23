@@ -1,17 +1,28 @@
 <%= shelf ? shelf.get('name') : 'All My Books' %>
 <ul>
-  <% shelvings.each(function (shelving) { %>
+  <% books.each(function (book) { %>
     <li>
-      <%= shelving.book().escape('title') %>
-      <select data-shelving-id="<%= shelving.get('id') %>" data-shelf-id="<%= shelving.get('shelf_id') %>">
-        <% shelves.each(function (shelf) { %>
+      <%= book.escape('title') %>
+      <select data-book-id="<%= book.get('id') %>">
+        <% shelves.defaultShelves().each(function (shelf) { %>
           <option value="<%= shelf.get('id') %>"
-            <% if (shelving.get('shelf_id') == shelf.get('id')) { %>
+            <% if (shelf.books().get(book.get('id'))) { %>
               selected
             <% } %>
             ><%= shelf.escape('name') %></option>
         <% }); %>
       </select>
+      <% shelves.customShelves().each(function (shelf) { %>
+        <input type="checkbox" name="custom_shelf"
+          data-book-id="<%= book.get('id') %>"
+          data-shelf-id="<%= shelf.get('id') %>"
+          value="<%= shelf.get('name') %>"
+          <% if (shelf.books().get(book.get('id'))) { %>
+            checked
+          <% } %>
+        >
+        <%= shelf.get('name') %>
+      <% }); %>
     </li>
   <% }) %>
 </ul>
