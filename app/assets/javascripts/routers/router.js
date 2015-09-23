@@ -8,6 +8,7 @@ YourReads.Routers.Router = Backbone.Router.extend({
     'books/:bookId/reviews/new': 'reviewNew',
     'books/:bookId/reviews/edit': 'reviewEdit',
     'shelves': 'shelvesIndex',
+    'shelves/all': 'shelfAll',
     'shelves/:id': 'shelfDetail'
   },
   initialize: function (options) {
@@ -70,6 +71,7 @@ YourReads.Routers.Router = Backbone.Router.extend({
   shelvesIndex: function (callback) {
     var shelves = new YourReads.Collections.Shelves();
     var view = new YourReads.Views.ShelvesIndex({collection: shelves, callback: callback});
+    this._shelves = shelves;
     this._shelveIndex = view;
     shelves.fetch();
     this._swapView(view);
@@ -80,18 +82,23 @@ YourReads.Routers.Router = Backbone.Router.extend({
       this.shelvesIndex(this.shelfDetail.bind(this, id));
       return;
     }
-    // alert('shelfdetail')
-    var shelf = new YourReads.Models.Shelf({id: id});
+    // var shelf = new YourReads.Models.Shelf({id: id});
+    var shelf = this._shelves.getOrFetch(id);
     var view = new YourReads.Views.ShelfDetail({model: shelf});
-    shelf.fetch();
-    // this._swapView(view);
-    // debugger
-    $('.shelf-detail').html(view.render().$el);
-    // debugger
-    // $('.shelf-detail').html("hello");
-    // debugger
-    // $('#main').append(view.$el);
-    // console.log(view.$el);
+    this._shelveIndex.removeAllSubviews();
+    this._shelveIndex.addSubview('.shelf-detail', view);
+    // shelf.fetch();
+  },
+
+  shelfAll: function () {
+    if (this._shelveIndex === undefined) {
+      this.shelvesIndex();
+      return;
+    }
+    var view = new YourReads.Views.ShelfDetail({collection: this._shelves});
+    this._shelveIndex.removeAllSubviews();
+    this._shelveIndex.addSubview('.shelf-detail', view);
+
   },
 
   reviewEdit: function (bookId) {

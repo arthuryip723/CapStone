@@ -1,6 +1,6 @@
-<%= shelf.get('name') %>
+<%= shelf ? shelf.get('name') : 'All My Books' %>
 <ul>
-  <% shelf.books().each(function (book) { %>
+  <% books.each(function (book) { %>
     <li>
       <%= book.get('title') %>
     </li>
