@@ -8,7 +8,8 @@ YourReads.Models.Shelving = Backbone.Model.extend({
   },
   parse: function (response) {
     if (response.book) {
-      this.book().set(response.book);
+      // this.book().set(response.book, {parse: true});
+      this.book().set(this.book().parse(response.book));
       delete response.book;
     }
     return response;

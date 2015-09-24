@@ -186,7 +186,7 @@ img {
   margin: 0 0 0 20px;
 }
 
-.book-title {
+.books-index-view .book-title {
   font-size: 20px;
   display: block;
   padding: 0 0 10px 0;
@@ -288,14 +288,26 @@ textarea {
   /*float: left;*/
 }
 
-.book-info {
+.book-show-view {
+  padding: 20px 0 0 0;
+}
+
+.book-show-view .book-info {
   float: left;
   margin: 0 0 0 20px
 }
 
-.book-show {
-  margin: 20px 0 0 0;
+.book-show-view .review-section {
+  /*border-top: 2px solid #e8e8e8;*/
 }
+
+.book-show-view h2 {
+  background: #f8f9f1;
+}
+
+/*.book-show {
+  margin: 20px 0 0 0;
+}*/
 
 .book-title-primary {
   font-size: 24px;
@@ -303,27 +315,31 @@ textarea {
   margin: 0 0 20px 0;
 }
 
-.review-list {
+.book-show-view .review-list {
 
 }
 
-.review-list-item {
+.book-show-view .review-list-item {
   border-top: 1px solid #e3dfc9;
   /*margin: 0 0 20px 0;*/
   padding: 20px 0;
 }
 
-.review-list {
+.book-show-view .review-list-item:last-child {
+  border-bottom: 1px solid #e3dfc9;
+}
+
+.book-show-view .review-list {
 
 }
 
-.user-thumb {
+.book-show-view .user-thumb {
   display: block;
   width: 50px;
   float: left;
 }
 
-.review-content {
+.book-show-view .review-content {
   float: left;
   margin: 0 0 0 20px;
 }
@@ -379,4 +395,64 @@ textarea {
 .author-info h1 {
   font-size: 24px;
   margin: 0 0 10px 0;
+}
+
+.footer {
+  background: #f8f8f8;
+  margin: 20px 0 0 0;
+  border-top: 1px solid #e3dfc9;
+}
+
+.footer .footer-nav {
+  width: 900px;
+  margin: 0 auto;
+  padding: 20px 0;
+}
+
+.footer .copy-right{
+  float: left;
+}
+
+.footer .nav-list {
+  float: right;
+}
+
+.footer .nav-list li {
+  float: left;
+  padding: 0 10px;
+  /*margin: 0 0 0 20px;*/
+}
+
+.footer .nav-list li:first-child {
+  border-left: 0;
+}
+
+.footer .nav-list li {
+  border-left: 1px solid;
+}
+
+.shelf-detail-container {
+  float: left;
+  margin: 0 0 0 20px;
+}
+
+.shelf-detail-view .book-info{
+  width: 240px;
+  float: left;
+  margin: 0 0 0 10px;
+}
+.shelf-detail-view .book-title {
+  display: block;
+}
+
+.shelf-detail-view .thumb {
+  float: left;
+  display: block;
+  width: 50px;
+}
+
+.shelf-detail-view li {
+  border-top: 1px solid #e8e8e8;
+  padding: 10px 0;
+  /*margin: 0 0 20px 0;*/
 }

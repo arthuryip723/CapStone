@@ -1,6 +1,7 @@
 YourReads.Views.BooksIndex = Backbone.View.extend({
   template: JST['books/index'],
   tagName: 'ul',
+  className: 'books-index-view',
   events: {
     'change select': 'addToShelf',
     'change :checkbox': 'toggleShelf'

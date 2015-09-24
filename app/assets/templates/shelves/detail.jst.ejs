@@ -1,8 +1,14 @@
-<%= shelf ? shelf.get('name') : 'All My Books' %>
+<h3><%= shelf ? shelf.get('name') : 'All My Books' %></h3>
 <ul>
   <% books.each(function (book) { %>
-    <li>
-      <%= book.escape('title') %>
+    <li class="group">
+      <a href="#/books/<%= book.get('id') %>" class="thumb">
+        <img src="<%= book.get('image_url') %>">
+      </a>
+      <div class="book-info">
+        <a href="#/books/<%= book.get('id') %>" class="book-title"><%= book.escape('title') %></a>
+        by <a href="#/authors/<%= book.author().get('id') %>"><%= book.author().escape('name') %></a>
+      </div>
       <select data-book-id="<%= book.get('id') %>">
         <% shelves.defaultShelves().each(function (shelf) { %>
           <option value="<%= shelf.get('id') %>"

@@ -1,6 +1,6 @@
 YourReads.Views.ShelfDetail = Backbone.View.extend({
   template: JST['shelves/detail'],
-  className: 'just-for-test',
+  className: 'shelf-detail-view',
   initialize: function () {
     // debugger
     this.listenTo(this.model, 'sync', this.render);
@@ -67,6 +67,7 @@ YourReads.Views.ShelfDetail = Backbone.View.extend({
   render: function () {
     // var template = null;
     if (this.model) {
+      // debugger
       this.$el.html(this.template({
         shelf: this.model,
         // books: this.model.books(),

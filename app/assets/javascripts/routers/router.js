@@ -19,12 +19,14 @@ YourReads.Routers.Router = Backbone.Router.extend({
     this._shelves.fetch();
   },
   index: function () {
+    this._clearShelves();
     this.books.fetch();
     var view = new YourReads.Views.BooksIndex({collection: this.books, shelves: this._shelves});
     this._swapView(view);
   },
 
   bookNew: function () {
+    this._clearShelves();
     var book = new YourReads.Models.Book();
     var authors = new YourReads.Collections.Authors();
     authors.fetch();
@@ -37,6 +39,7 @@ YourReads.Routers.Router = Backbone.Router.extend({
   },
 
   bookShow: function (id) {
+    this._clearShelves();
     var book = this.books.getOrFetch(id);
     var view = new YourReads.Views.BookShow({
       model: book
@@ -45,6 +48,7 @@ YourReads.Routers.Router = Backbone.Router.extend({
   },
 
   authorNew: function () {
+    this._clearShelves();
     var author = new YourReads.Models.Author();
     var authors = new YourReads.Collections.Authors();
     authors.fetch();
@@ -56,6 +60,7 @@ YourReads.Routers.Router = Backbone.Router.extend({
   },
 
   authorShow: function (id) {
+    this._clearShelves();
     var author = new YourReads.Models.Author({id: id});
     author.fetch();
     var view = new YourReads.Views.AuthorShow({
@@ -65,6 +70,7 @@ YourReads.Routers.Router = Backbone.Router.extend({
   },
 
   reviewNew: function (bookId) {
+    this._clearShelves();
     // var book = this.books.getOrFetch(bookId);
     var review = new YourReads.Models.Review({bookId: bookId});
     var view = new YourReads.Views.ReviewForm({model: review});
@@ -89,7 +95,7 @@ YourReads.Routers.Router = Backbone.Router.extend({
     var shelf = this._shelves.getOrFetch(id);
     var view = new YourReads.Views.ShelfDetail({model: shelf, collection: this._shelves});
     this._shelveIndex.removeAllSubviews();
-    this._shelveIndex.addSubview('.shelf-detail', view);
+    this._shelveIndex.addSubview('.shelf-detail-container', view);
     // shelf.fetch();
   },
 
@@ -100,17 +106,19 @@ YourReads.Routers.Router = Backbone.Router.extend({
     }
     var view = new YourReads.Views.ShelfDetail({collection: this._shelves});
     this._shelveIndex.removeAllSubviews();
-    this._shelveIndex.addSubview('.shelf-detail', view);
+    this._shelveIndex.addSubview('.shelf-detail-container', view);
 
   },
 
   reviewEdit: function (bookId) {
+    this._clearShelves();
     var book = this.books.getOrFetch(bookId);
     var view = new YourReads.Views.ReviewEdit({model: book});
     this._swapView(view);
   },
 
   search: function () {
+    this._clearShelves();
     var view = new YourReads.Views.Search();
     this._swapView(view);
   },
@@ -119,5 +127,8 @@ YourReads.Routers.Router = Backbone.Router.extend({
     this._currentView && this._currentView.remove();
     this._currentView = view;
     this.$rootEl.html(this._currentView.render().$el);
+  },
+  _clearShelves: function () {
+    this._shelveIndex = undefined;
   }
 });

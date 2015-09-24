@@ -11,7 +11,7 @@ YourReads.Views.ShelvesIndex = Backbone.CompositeView.extend({
       // shelf: this.model,
       collection: this.collection
     });
-    this.addSubview('.shelf-detail', shelfDetailView);
+    this.addSubview('.shelf-detail-container', shelfDetailView);
   },
   // mysync: function () {
   //   alert('sync');
@@ -19,7 +19,7 @@ YourReads.Views.ShelvesIndex = Backbone.CompositeView.extend({
   events: {
     'submit form': 'createShelf'
   },
-  
+
   createShelf: function (event) {
     event.preventDefault();
     var $form = $(event.currentTarget);
