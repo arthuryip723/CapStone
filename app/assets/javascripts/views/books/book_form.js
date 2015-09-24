@@ -1,7 +1,7 @@
 YourReads.Views.BookForm = Backbone.View.extend({
   template: JST['books/form'],
   tagName: 'form',
-  className: 'book-form',
+  className: 'book-form-view',
   events: {
     'click button': 'submit',
     'change #image': 'fileInputChange'

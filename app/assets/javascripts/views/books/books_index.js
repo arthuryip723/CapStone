@@ -30,7 +30,7 @@ YourReads.Views.BooksIndex = Backbone.View.extend({
           // debugger
           // shelf.shelvings().add(model);
           // that.collection.trigger('update', that.collection);
-          alert('success create')
+          alert('Successfuly added to book shelf!');
         }
       });
     } else {
@@ -39,7 +39,7 @@ YourReads.Views.BooksIndex = Backbone.View.extend({
         success: function (model) {
           // shelf.shelvings().remove(model);
           // that.collection.trigger('update', that.collection);
-          alert('success detroy')
+          alert('Successfuly removed from book shelf!');
         }
       });
     }
@@ -67,7 +67,7 @@ YourReads.Views.BooksIndex = Backbone.View.extend({
     shelving = new YourReads.Models.Shelving({book_id: bookId, shelf_id: shelfId});
     shelving.save({}, {
       success: function () {
-        alert('success');
+        alert('Successfuly moved to book shelf!');
       }
     });
 

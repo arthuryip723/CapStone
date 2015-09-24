@@ -181,11 +181,12 @@ img {
   width: 480px;
 }
 
-.book-shelf {
+.book-shelves {
   float: left;
   margin: 0 0 0 20px;
 }
 
+.search-view .book-title,
 .books-index-view .book-title {
   font-size: 20px;
   display: block;
@@ -246,10 +247,10 @@ textarea {
 .signup-form select,
 .signin-form input,
 .signin-form select,
-.book-form input,
-.book-form select,
-.review-form input,
-.review-form select,
+.book-form-view input,
+.book-form-view select,
+.review-form-view input,
+.review-form-view select,
 .author-form input,
 .author-form select{
   border: 1px solid;
@@ -258,18 +259,18 @@ textarea {
 
 .signup-form label,
 .signin-form label,
-.book-form label,
+.book-form-view label,
 .author-form label,
-.review-form label {
+.review-form-view label {
   display: block;
   margin: 0 0 10px 0;
 }
 
 .signup-form button,
 .signin-form button,
-.book-form button,
+.book-form-view button,
 .author-form button,
-.review-form button {
+.review-form-view button {
   border-radius: 5px;
   padding: 5px 10px;
   background: #dfd8c6;
@@ -451,8 +452,42 @@ textarea {
   width: 50px;
 }
 
-.shelf-detail-view li {
+.shelf-detail-view .book-list-item {
   border-top: 1px solid #e8e8e8;
   padding: 10px 0;
   /*margin: 0 0 20px 0;*/
+}
+
+.search-view .search-result-item {
+  border-top: 1px solid #e8e8e8;
+}
+
+.book-form-view .preview {
+  max-width: 240px;
+  max-height: 360px;
+  float: left;
+  padding: 20px;
+  /*border: 1px solid;*/
+}
+
+.book-form-view .book-info-fields {
+  float: left;
+}
+
+.review-form-view textarea {
+  width: 360px;
+  height: 180px;
+}
+
+.shelf-detail-view .default-shelves-select,
+.search-view .default-shelves-select,
+.books-index-view .default-shelves-select {
+  float: left;
+}
+
+.shelf-detail-view .custom-shelves-list,
+.search-view .custom-shelves-list,
+.books-index-view .custom-shelves-list {
+  float: left;
+  margin: 0 0 0 10px;
 }

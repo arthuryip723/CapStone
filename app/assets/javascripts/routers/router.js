@@ -119,7 +119,7 @@ YourReads.Routers.Router = Backbone.Router.extend({
 
   search: function () {
     this._clearShelves();
-    var view = new YourReads.Views.Search();
+    var view = new YourReads.Views.Search({shelves: this._shelves});
     this._swapView(view);
   },
 

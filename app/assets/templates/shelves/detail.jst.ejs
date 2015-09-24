@@ -1,15 +1,17 @@
 <h3><%= shelf ? shelf.get('name') : 'All My Books' %></h3>
 <ul>
   <% books.each(function (book) { %>
-    <li class="group">
+    <li class="book-list-item group">
       <a href="#/books/<%= book.get('id') %>" class="thumb">
         <img src="<%= book.get('image_url') %>">
       </a>
       <div class="book-info">
         <a href="#/books/<%= book.get('id') %>" class="book-title"><%= book.escape('title') %></a>
         by <a href="#/authors/<%= book.author().get('id') %>"><%= book.author().escape('name') %></a>
+        <br>
+        <%= book.get('average_rating') ? book.get('average_rating') : '0' %> stars
       </div>
-      <select data-book-id="<%= book.get('id') %>">
+      <select data-book-id="<%= book.get('id') %>" class="default-shelves-select">
         <% shelves.defaultShelves().each(function (shelf) { %>
           <option value="<%= shelf.get('id') %>"
             <% if (shelf.books().get(book.get('id'))) { %>
@@ -18,17 +20,21 @@
             ><%= shelf.escape('name') %></option>
         <% }); %>
       </select>
-      <% shelves.customShelves().each(function (shelf) { %>
-        <input type="checkbox" name="custom_shelf"
-          data-book-id="<%= book.get('id') %>"
-          data-shelf-id="<%= shelf.get('id') %>"
-          value="<%= shelf.get('name') %>"
-          <% if (shelf.books().get(book.get('id'))) { %>
-            checked
-          <% } %>
-        >
-        <%= shelf.get('name') %>
-      <% }); %>
+      <ul class="custom-shelves-list">
+        <% shelves.customShelves().each(function (shelf) { %>
+          <li>
+            <input type="checkbox" name="custom_shelf"
+              data-book-id="<%= book.get('id') %>"
+              data-shelf-id="<%= shelf.get('id') %>"
+              value="<%= shelf.get('name') %>"
+              <% if (shelf.books().get(book.get('id'))) { %>
+                checked
+              <% } %>
+            >
+            <%= shelf.get('name') %>
+          </li>
+        <% }); %>
+      </ul>
     </li>
   <% }) %>
 </ul>

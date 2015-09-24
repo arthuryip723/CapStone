@@ -10,8 +10,8 @@
         by <a href="#/authors/<%= book.author().get('id') %>" class="author-name"><%= book.author().escape('name') %></a><br>
         <%= book.escape('average_rating') ? book.escape('average_rating') : 0 %> stars
       </div>
-      <div class="book-shelf">
-        <select data-book-id="<%= book.get('id') %>">
+      <div class="book-shelves group">
+        <select data-book-id="<%= book.get('id') %>" class="default-shelves-select">
           <option disabled selected>-- select a shelf --</option>
           <% shelves.defaultShelves().each(function (shelf) { %>
             <option value="<%= shelf.get('id') %>"
@@ -23,17 +23,21 @@
             </option>
           <% }); %>
         </select>
-        <% shelves.customShelves().each(function (shelf) { %>
-          <input type="checkbox" name="custom_shelf"
-            data-book-id="<%= book.get('id') %>"
-            data-shelf-id="<%= shelf.get('id') %>"
-            value="<%= shelf.get('name') %>"
-            <% if (shelf.books().get(book.get('id'))) { %>
-              checked
-            <% } %>
-          >
-          <%= shelf.get('name') %>
-        <% }); %>
+        <ul class="custom-shelves-list">
+          <% shelves.customShelves().each(function (shelf) { %>
+            <li>
+              <input type="checkbox" name="custom_shelf"
+                data-book-id="<%= book.get('id') %>"
+                data-shelf-id="<%= shelf.get('id') %>"
+                value="<%= shelf.get('name') %>"
+                <% if (shelf.books().get(book.get('id'))) { %>
+                  checked
+                <% } %>
+              >
+              <%= shelf.get('name') %>
+            </li>
+          <% }); %>
+        </ul>
       </div>
     </li>
   <% }); %>

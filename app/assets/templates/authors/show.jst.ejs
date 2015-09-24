@@ -13,7 +13,7 @@
     <% author.books().each(function (book) { %>
       <!-- <li><%= book.escape('title') %></li> -->
       <li class="book-list-item group">
-        <a href="#/books/<%= book.get('id') %>" class="book-cover"><img src="/assets/cover.jpg"></a>
+        <a href="#/books/<%= book.get('id') %>" class="book-cover"><img src="<%= book.get('image_url') %>"></a>
         <div class="book-content">
           <a href="#/books/<%= book.get('id') %>" class="book-title" >
             <%= book.escape('title') %>

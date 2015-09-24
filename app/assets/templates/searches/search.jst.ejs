@@ -2,37 +2,69 @@
 <form>
   <input type="text" placeholder="search" name="query">
 </form> -->
-
-<h1>Search!</h1>
-
 <label>
-	Query
-	<input type="text" class="query">
+	Search
+	<input type="text" class="query" style="border:1px solid;">
 </label>
 
-<section class="results">
+<!-- <section class="results"> -->
 <nav>
 	Displaying page number <%= results.pageNum %> out
 	of <%= results.total_count %> results
 	<a class="prev-page" href="javascript:void(0)">Prev</a>
 	<a class="next-page" href="javascript:void(0)">Next</a>
 </nav>
-
+<ul>
 	<% results.each(function (result) { %>
-		<article>
-			<% if (result instanceof Demo.Models.Book) { %>
-
-				<%= result.escape("title") %>
+		<li class="search-result-item">
+			<% if (result instanceof YourReads.Models.Book) { %>
+				<%
+					var book = result;
+				%>
+				<a href="#/books/<%= book.get('id') %>" class="book-cover"><img src="<%= book.get('image_url') %>"></a>
+	      <div class="book-content">
+	        <a href="#/books/<%= book.get('id') %>" class="book-title" >
+	          <%= book.escape('title') %>
+	        </a>
+	        by <a href="#/authors/<%= book.author().get('id') %>" class="author-name"><%= book.author().escape('name') %></a><br>
+	        <%= book.escape('average_rating') ? book.escape('average_rating') : 0 %> stars
+	      </div>
+	      <div class="book-shelves group">
+	        <select data-book-id="<%= book.get('id') %>" class="default-shelves-select">
+	          <option disabled selected>-- select a shelf --</option>
+	          <% shelves.defaultShelves().each(function (shelf) { %>
+	            <option value="<%= shelf.get('id') %>"
+	              <% if (shelf.books().get(book.get('id'))) { %>
+	                selected
+	              <% } %>
+	              >
+	              <%= shelf.get('name') %>
+	            </option>
+	          <% }); %>
+	        </select>
+	        <ul class="custom-shelves-list">
+	          <% shelves.customShelves().each(function (shelf) { %>
+	            <li>
+	              <input type="checkbox" name="custom_shelf"
+	                data-book-id="<%= book.get('id') %>"
+	                data-shelf-id="<%= shelf.get('id') %>"
+	                value="<%= shelf.get('name') %>"
+	                <% if (shelf.books().get(book.get('id'))) { %>
+	                  checked
+	                <% } %>
+	              >
+	              <%= shelf.get('name') %>
+	            </li>
+	          <% }); %>
+	        </ul>
+	      </div>
 
 			<% } else { %>
 
-				<header>
-					<%= result.escape("title") %>
-				</header>
-
-				<p><%= result.escape("body") %></p>
+				<%= result.escape("name") %>
 
 			<% } %>
-		</article>
+		</li>
 	<% }) %>
-</section>
+</ul>
+<!-- </section> -->
