@@ -6,6 +6,7 @@
 # json.author book.author
 
 json.extract!(book, :id, :title, :author_id, :isbn, :average_rating)
+json.image_url asset_path(book.image.url(:original))
 if include_author
   json.author do
     json.extract! book.author, :id, :name

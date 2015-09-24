@@ -6,7 +6,7 @@ module Api
     end
 
     def create
-      author_name = params[:author_name]
+      author_name = params[:book][:author_name]
       author = Author.find_by_name(author_name)
       unless author
         author = Author.create!(name: author_name)
@@ -47,7 +47,7 @@ module Api
     private
     def book_params
       # params.require(:book).permit(:title, :author_name, :isbn)
-      params.require(:book).permit(:title, :author_id, :isbn)
+      params.require(:book).permit(:title, :author_id, :isbn, :image)
     end
   end
 end

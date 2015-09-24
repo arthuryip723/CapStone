@@ -9,7 +9,8 @@ YourReads.Routers.Router = Backbone.Router.extend({
     'books/:bookId/reviews/edit': 'reviewEdit',
     'shelves': 'shelvesIndex',
     'shelves/all': 'shelfAll',
-    'shelves/:id': 'shelfDetail'
+    'shelves/:id': 'shelfDetail',
+    'search': 'search',
   },
   initialize: function (options) {
     this.books = options.books;
@@ -106,6 +107,11 @@ YourReads.Routers.Router = Backbone.Router.extend({
   reviewEdit: function (bookId) {
     var book = this.books.getOrFetch(bookId);
     var view = new YourReads.Views.ReviewEdit({model: book});
+    this._swapView(view);
+  },
+
+  search: function () {
+    var view = new YourReads.Views.Search();
     this._swapView(view);
   },
 

@@ -2,7 +2,7 @@
 <ul class="book-list">
   <% books.each(function (book) { %>
     <li class="book-list-item group">
-      <a href="#/books/<%= book.get('id') %>" class="book-cover"><img src="/assets/cover.jpg"></a>
+      <a href="#/books/<%= book.get('id') %>" class="book-cover"><img src="<%= book.get('image_url') %>"></a>
       <div class="book-content">
         <a href="#/books/<%= book.get('id') %>" class="book-title" >
           <%= book.escape('title') %>

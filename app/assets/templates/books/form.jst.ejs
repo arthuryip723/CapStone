@@ -14,4 +14,7 @@
 <input type="text" id="author" name="author_name" value="<%= book.author().escape('name') %>"><br>
 <label for="isbn">ISBN</label>
 <input type="text" name="isbn" id="isbn" value="<%= book.escape('isbn') %>"><br>
-<button>Submit</button>
+<label for="image">Image</label>
+<input type="file" name="image" id="image"><br>
+<img src="" id="preview" width="50">
+<button>Submit</button> or <a href="#">Cancel</a>

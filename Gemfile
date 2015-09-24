@@ -37,6 +37,15 @@ gem 'rails_12factor'
 
 gem 'backbone-on-rails'
 
+# this is for file upload
+gem 'ejs'
+gem 'figaro'
+gem 'paperclip'
+gem 'aws-sdk', '~> 1.6'
+
+gem "pg_search"
+gem "kaminari"
+
 group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console
   gem 'byebug'
@@ -46,4 +55,8 @@ group :development, :test do
 
   # Spring speeds up development by keeping your application running in the background. Read more: https://github.com/rails/spring
   gem 'spring'
+end
+
+group :development do
+  gem 'better_errors'
 end
