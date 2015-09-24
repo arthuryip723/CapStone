@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150924035259) do
+ActiveRecord::Schema.define(version: 20150924142640) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -48,6 +48,17 @@ ActiveRecord::Schema.define(version: 20150924035259) do
     t.datetime "updated_at",      null: false
   end
 
+  create_table "projects", force: :cascade do |t|
+    t.string   "name",                        null: false
+    t.text     "description"
+    t.integer  "workspace_id",                null: false
+    t.datetime "created_at"
+    t.datetime "updated_at"
+    t.boolean  "on_dashboard", default: true
+  end
+
+  add_index "projects", ["workspace_id"], name: "index_projects_on_workspace_id", using: :btree
+
   create_table "reviews", force: :cascade do |t|
     t.integer  "user_id",    null: false
     t.integer  "book_id",    null: false
@@ -79,15 +90,49 @@ ActiveRecord::Schema.define(version: 20150924035259) do
   add_index "shelvings", ["book_id"], name: "index_shelvings_on_book_id", using: :btree
   add_index "shelvings", ["shelf_id"], name: "index_shelvings_on_shelf_id", using: :btree
 
+  create_table "tasks", force: :cascade do |t|
+    t.string   "name",                        null: false
+    t.text     "description"
+    t.datetime "due_date"
+    t.boolean  "completed",   default: false
+    t.integer  "priority"
+    t.integer  "creator_id",                  null: false
+    t.integer  "assignee_id"
+    t.integer  "project_id"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  add_index "tasks", ["assignee_id"], name: "index_tasks_on_assignee_id", using: :btree
+  add_index "tasks", ["creator_id"], name: "index_tasks_on_creator_id", using: :btree
+  add_index "tasks", ["project_id"], name: "index_tasks_on_project_id", using: :btree
+
+  create_table "user_workspaces", force: :cascade do |t|
+    t.integer  "user_id"
+    t.integer  "workspace_id"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
   create_table "users", force: :cascade do |t|
     t.string   "email",           null: false
     t.string   "password_digest", null: false
     t.string   "session_token",   null: false
     t.datetime "created_at",      null: false
     t.datetime "updated_at",      null: false
+    t.string   "provider"
+    t.string   "uid"
+    t.string   "fname"
+    t.string   "lname"
   end
 
   add_index "users", ["email"], name: "index_users_on_email", unique: true, using: :btree
   add_index "users", ["session_token"], name: "index_users_on_session_token", unique: true, using: :btree
+
+  create_table "workspaces", force: :cascade do |t|
+    t.string   "name",       null: false
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
 
 end

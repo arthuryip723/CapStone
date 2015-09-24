@@ -22,6 +22,7 @@ Rails.application.routes.draw do
     # resources :board_memberships
     # resources :card_assignments
   end
+  get "/auth/:provider/callback", to: "sessions#omniauth"
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
 
