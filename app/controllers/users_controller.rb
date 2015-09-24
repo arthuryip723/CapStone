@@ -6,8 +6,11 @@ class UsersController < ApplicationController
   def create
     @user = User.new(user_params)
     if @user.save
+      @user.shelves.create(category: :to_read, name: "To Read")
+      @user.shelves.create(category: :reading, name: "Reading")
+      @user.shelves.create(category: :read, name: "Read")
       sign_in(@user)
-      redirect_to @user
+      redirect_to root_url
     else
       flash.now[:errors] = @user.errors.full_messages
       render :new
