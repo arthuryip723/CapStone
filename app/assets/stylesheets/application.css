@@ -494,7 +494,7 @@ textarea {
 }
 
 .siteheader {
-  background-image: url(/assets/masthead_background.jpg);
+  /*background-image: url(/assets/masthead_background.jpg);*/
   height: 370px;
 }
 
