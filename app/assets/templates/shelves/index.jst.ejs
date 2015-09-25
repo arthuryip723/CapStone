@@ -7,7 +7,9 @@
       <%= shelf.escape('name') %> (<%= shelf.books().length %>)
     </a></li>
   <% }); %>
-  <li><hr></li>
+</ul>
+<hr>
+<ul>
   <% shelves.customShelves().each(function (shelf) { %>
     <li><a href="#/shelves/<%= shelf.get('id') %>">
       <%= shelf.escape('name') %> (<%= shelf.books().length %>)

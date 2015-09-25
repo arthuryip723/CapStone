@@ -38,6 +38,10 @@ class User < ActiveRecord::Base
             lname: auth_hash[:info][:name].split.last,
             email: auth_hash[:info][:nickname], #bad solution
             password: SecureRandom::urlsafe_base64)
+
+      user.shelves.create(category: :to_read, name: "To Read")
+      user.shelves.create(category: :reading, name: "Reading")
+      user.shelves.create(category: :read, name: "Read")
     end
 
     user

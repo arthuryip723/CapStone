@@ -186,6 +186,7 @@ img {
   margin: 0 0 0 20px;
 }
 
+.review-edit-view .book-title,
 .search-view .book-title,
 .books-index-view .book-title {
   font-size: 20px;
@@ -379,6 +380,7 @@ textarea {
 .author-thumb {
   width: 200px;
   float: left;
+  padding: 20px 0 0 0;
 }
 
 .author-and-books {
@@ -461,6 +463,7 @@ textarea {
 
 .search-view .search-result-item {
   border-top: 1px solid #e8e8e8;
+  padding: 20px 0;
 }
 
 .book-form-view .preview {
@@ -533,4 +536,9 @@ textarea {
   border-radius: 5px;
   padding: 5px 10px;
   background: #dfd8c6;
+}
+
+.search-view label {
+  padding: 20px 20px;
+  display: block
 }
