@@ -29,6 +29,9 @@
 	        by <a href="#/authors/<%= book.author().get('id') %>" class="author-name"><%= book.author().escape('name') %></a><br>
 	        <%= book.escape('average_rating') ? book.escape('average_rating') : 0 %> stars
 	      </div>
+				<div class="left">
+					<a href="#/books/<%= book.get('id') %>/reviews/edit">Review</a>
+				</div>
 	      <div class="book-shelves group">
 	        <select data-book-id="<%= book.get('id') %>" class="default-shelves-select">
 	          <option disabled selected>-- select a shelf --</option>

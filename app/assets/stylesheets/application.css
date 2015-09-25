@@ -542,3 +542,15 @@ textarea {
   padding: 20px 20px;
   display: block
 }
+
+.left {
+  float: left;
+}
+
+.right {
+  float: right;
+}
+
+.shelf-detail-view .default-shelves-select {
+  margin: 0 0 0 10px;
+}

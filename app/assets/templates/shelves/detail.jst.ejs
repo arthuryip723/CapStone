@@ -11,6 +11,9 @@
         <br>
         <%= book.get('average_rating') ? book.get('average_rating') : '0' %> stars
       </div>
+      <div class="left">
+        <a href="#/books/<%= book.get('id') %>/reviews/edit">Review</a>
+      </div>
       <select data-book-id="<%= book.get('id') %>" class="default-shelves-select">
         <% shelves.defaultShelves().each(function (shelf) { %>
           <option value="<%= shelf.get('id') %>"
