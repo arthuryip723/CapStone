@@ -266,6 +266,7 @@ textarea {
   margin: 0 0 10px 0;
 }
 
+.corner-signup-form button,
 .signup-form button,
 .signin-form button,
 .book-form-view button,
@@ -490,4 +491,46 @@ textarea {
 .books-index-view .custom-shelves-list {
   float: left;
   margin: 0 0 0 10px;
+}
+
+.siteheader {
+  background-image: url(/assets/masthead_background.jpg);
+  height: 370px;
+}
+
+.siteheader input[type="text"],
+.siteheader input[type="password"]
+{
+  border-radius: 3px
+}
+
+.siteheader .logo {
+  float: left;
+  font-size: 36px;
+  /*font-weight: bold;*/
+  padding: 15px 0;
+}
+
+.siteheader .center-align {
+  width: 900px;
+  margin: 0 auto;
+}
+
+.signin-form h2 {
+  font-size: 24px;
+}
+
+.corner-signup-form {
+  float: right;
+  padding: 25px 0;
+}
+
+.corner-signup-form input {
+  border: 1px solid;
+}
+
+.twitter-auth {
+  border-radius: 5px;
+  padding: 5px 10px;
+  background: #dfd8c6;
 }

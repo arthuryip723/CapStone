@@ -1,32 +1,54 @@
-<a href="/users/new">Sign Up</a>
+<div class="siteheader">
+<!-- <a href="/users/new">Sign Up</a> -->
+  <div class="center-align">
+    <div class="group">
+      <div class="logo">
+        YourReads
+      </div>
+      <form action="<%= users_url %>" method="post" class="corner-signup-form">
+        <%= auth_token_input %>
+        <label for="email">
+          Email
+        </label>
+          <input id="email" type="text" name="user[email]" value="">
 
-<p>
-  <a href="/auth/twitter">Sign in with Twitter</a>
-</p>
-<form action="<%= session_url %>" method="post" class="signin-form">
-  <h2>Sign In</h2>
-  <br>
-  <%= auth_token_input %>
+        <label for="password">
+          Password
+        </label>
+          <input id="password" type="password" name="user[password]" value="">
+          <button>Sign Up</button>
+      </form>
+    </div>
+    <form action="<%= session_url %>" method="post" class="signin-form">
+      <p>
+        <a href="/auth/twitter" class="twitter-auth">Sign in with Twitter</a>
+      </p>
+      <br>
+      <h2>Sign In</h2>
+      <br>
+      <%= auth_token_input %>
 
-  <label for="email">
-    Email
-  </label>
-    <input id="email" type="text" name="user[email]" value="">
+      <label for="email">
+        Email
+      </label>
+        <input id="email" type="text" name="user[email]" value="">
 
-  <label for="passowrd">
-    Password
-  </label>
-    <input id="password" type="password" name="user[password]" value="">
+      <label for="passowrd">
+        Password
+      </label>
+        <input id="password" type="password" name="user[password]" value="">
 
-  <!-- <input type="submit" value="Sign In"> -->
-  <br>
-  <button>Sign In</button>
-  <!-- <h3>Demo Account: ripe@gmail.com/password</h3> -->
-</form>
-<form action="<%= session_url %>" method="post" class="demo-login-form">
-  <%= auth_token_input %>
-  <input id="email" type="hidden" name="user[email]" value="ripe@gmail.com">
-  <input id="password" type="hidden" name="user[password]" value="password">
-  <button>Demo Login</button>
-</form>
+      <!-- <input type="submit" value="Sign In"> -->
+      <br>
+      <button>Sign In</button>
+      <!-- <h3>Demo Account: ripe@gmail.com/password</h3> -->
+    </form>
+    <form action="<%= session_url %>" method="post" class="demo-login-form">
+      <%= auth_token_input %>
+      <input id="email" type="hidden" name="user[email]" value="ripe@gmail.com">
+      <input id="password" type="hidden" name="user[password]" value="password">
+      <button>Demo Login</button>
+    </form>
+  </div>
+</div>
 <!-- <img src="<%= asset_path("cover.jpg") %>"> -->
