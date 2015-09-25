@@ -1,4 +1,9 @@
-<h3>All Books</h3>
+<h3>
+  All Books
+<div class="right" style="font-weight:normal;font-size:16px;">
+<a href="#/books/new" class="content-button">New Book</a> <a href="#/authors/new" class="content-button">New Author</a>
+</div>
+</h3>
 <ul class="book-list">
   <% books.each(function (book) { %>
     <li class="book-list-item group">
@@ -45,4 +50,6 @@
     </li>
   <% }); %>
 </ul>
+<div class="left">
 <a href="#/books/new" class="content-button">New Book</a> <a href="#/authors/new" class="content-button">New Author</a>
+</div>
