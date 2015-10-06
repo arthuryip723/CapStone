@@ -11,14 +11,22 @@ YourReads.Routers.Router = Backbone.Router.extend({
     'shelves/all': 'shelfAll',
     'shelves/:id': 'shelfDetail',
     'search': 'search',
+    'users': 'usersIndex',
+    'users/new': 'userNew',
+    'users/:id': 'userShow',
+    'session/new': 'signIn'
   },
   initialize: function (options) {
     this.books = options.books;
     this.$rootEl = options.$rootEl;
+    // figure out what I should do here
     this._shelves = new YourReads.Collections.Shelves();
-    this._shelves.fetch();
+    // this._shelves.fetch();
   },
   index: function () {
+    var callback = this.index.bind(this);
+    if (!this._requireSignedIn(callback)) return;
+    // debugger
     this._clearShelves();
     this.books.fetch();
     var view = new YourReads.Views.BooksIndex({collection: this.books, shelves: this._shelves});
@@ -121,6 +129,50 @@ YourReads.Routers.Router = Backbone.Router.extend({
     this._clearShelves();
     var view = new YourReads.Views.Search({shelves: this._shelves});
     this._swapView(view);
+  },
+
+  // userNew: function () {
+  //   if (!this._requireSignedOut()) return;
+  //   var model = new this.collection.model();
+  //   var formView = new YourReads.Views.UserForm();
+  // },
+
+  signIn: function (callback) {
+    if (!this._requireSignedOut(callback)) return;
+    var signInView = new YourReads.Views.SignIn({
+      callback: callback
+    });
+    this._swapView(signInView);
+  },
+
+  userNew: function () {
+    if (!this._requireSignedOut()) return;
+    // var model = new this.collection.model();
+    var model = new YourReads.Models.User();
+    var formView = new YourReads.Views.UserForm({
+      model: model
+    });
+    this._swapView(formView);
+  },
+
+  _requireSignedIn: function (callback) {
+    if (!YourReads.currentUser.isSignedIn()) {
+      callback = callback || this._goHome.bind(this);
+      this.signIn(callback);
+      return false;
+    }
+
+    return true;
+  },
+
+  _requireSignedOut: function (callback) {
+    if (YourReads.currentUser.isSignedIn()) {
+      callback = callback || this._goHome.bind(this);
+      callback();
+      return false;
+    }
+
+    return true;
   },
 
   _swapView: function (view) {

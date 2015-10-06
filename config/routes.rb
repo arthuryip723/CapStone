@@ -17,6 +17,9 @@ Rails.application.routes.draw do
     end
     resources :shelvings, except: [:new, :edit]
     get "/search", to: "static_pages#search"
+
+    resource :session, only: [:show, :create, :destroy]
+    resources :users, only: [:index, :show, :create]
     # resources :ratings, except: [:new, :edit]
     # resources :items
     # resources :board_memberships

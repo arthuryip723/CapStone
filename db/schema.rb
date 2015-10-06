@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150924142640) do
+ActiveRecord::Schema.define(version: 20151006041019) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -39,6 +39,29 @@ ActiveRecord::Schema.define(version: 20150924142640) do
   add_index "books", ["author_id"], name: "index_books_on_author_id", using: :btree
   add_index "books", ["isbn"], name: "index_books_on_isbn", using: :btree
   add_index "books", ["title"], name: "index_books_on_title", using: :btree
+
+  create_table "friend_requests", force: :cascade do |t|
+    t.integer  "from_id",    null: false
+    t.integer  "to_id",      null: false
+    t.integer  "status",     null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  add_index "friend_requests", ["from_id", "to_id"], name: "index_friend_requests_on_from_id_and_to_id", unique: true, using: :btree
+  add_index "friend_requests", ["from_id"], name: "index_friend_requests_on_from_id", using: :btree
+  add_index "friend_requests", ["to_id"], name: "index_friend_requests_on_to_id", using: :btree
+
+  create_table "friendships", force: :cascade do |t|
+    t.integer  "to_id",      null: false
+    t.integer  "from_id",    null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  add_index "friendships", ["from_id"], name: "index_friendships_on_from_id", using: :btree
+  add_index "friendships", ["to_id", "from_id"], name: "index_friendships_on_to_id_and_from_id", unique: true, using: :btree
+  add_index "friendships", ["to_id"], name: "index_friendships_on_to_id", using: :btree
 
   create_table "pg_search_documents", force: :cascade do |t|
     t.text     "content"

@@ -16,7 +16,7 @@
 
 //= require underscore
 //= require backbone
-//= require you_reads
+//= require your_reads
 //= require_tree ../templates
 //= require_tree ./utils
 //= require_tree ./models

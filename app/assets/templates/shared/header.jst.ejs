@@ -1,0 +1,19 @@
+  <nav class="header-nav group">
+    <h1 class="header-logo header-block"><a href="#">YourReads</a></h1>
+    <div class="header-content group">
+      <div class="header-user-info group">
+        <% if (YourReads.currentUser.isSignedIn()) {%>
+          Welcome, <%= currentUser.escape("email") %>!
+          <a href="javascript:void(0)" id="sign-out-link">Sign Out</a>
+        <% } else { %>
+          <a href="#session/new">Sign In</a>
+          <a href="#users/new">Sign Up</a>
+        <% } %>
+      </div>
+      <ul class="header-list group">
+        <li><a href="#">Home</a></li>
+        <li><a href="#/shelves">My Books</a></li>
+        <li><a href="#/search">Search</a></li>
+      </ul>
+    </div>
+  </nav>
