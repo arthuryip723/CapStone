@@ -9,6 +9,12 @@ class User < ActiveRecord::Base
   has_many :shelves
   has_many :books, -> { distinct }, through: :shelves
   has_many :shelvings, through: :shelves
+  has_many :tos, class_name: "Friendship", foreign_key: :to_id, primary_key: :id
+  has_many :froms, class_name: "Friendship", foreign_key: :from_id, primary_key: :id
+  has_many :followers, through: :tos, source: :from_user
+  has_many :followees, through: :froms, source: :to_user
+  has_many :from_requests, class_name: "FriendRequest", foreign_key: :from_id, primary_key: :id
+  has_many :to_requests, class_name: "FriendRequest", foreign_key: :to_id, primary_key: :id
 
   # has_many(
   #   :links,
@@ -61,6 +67,11 @@ class User < ActiveRecord::Base
     self.session_token = User.generate_token
     self.save!
     self.session_token
+  end
+
+  def friends
+    self.followees.joins(:tos).where("tos_users.from_id = ?", self.id)
+    # u.followees.joins(:tos).where("tos_users.from_id = ?", u.id)
   end
 
   private

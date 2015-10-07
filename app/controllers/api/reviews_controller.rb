@@ -6,7 +6,7 @@ module Api
     end
 
     def create
-      @review = current_user.reviews.create(review_params)
+      @review = current_user.reviews.new(review_params)
       if @review.save
         render json: @review
       else

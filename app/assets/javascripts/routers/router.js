@@ -14,7 +14,8 @@ YourReads.Routers.Router = Backbone.Router.extend({
     'users': 'usersIndex',
     'users/new': 'userNew',
     'users/:id': 'userShow',
-    'session/new': 'signIn'
+    'session/new': 'signIn',
+    'requests': 'requestsIndex'
   },
   initialize: function (options) {
     this.books = options.books;
@@ -153,6 +154,32 @@ YourReads.Routers.Router = Backbone.Router.extend({
       model: model
     });
     this._swapView(formView);
+  },
+
+  userShow: function (id) {
+    // alert("here")
+    var callback = this.userShow.bind(this, id);
+    if (!this._requireSignedIn(callback)) return;
+
+    var model = new YourReads.Models.User({ id: id });
+    model.fetch();
+    var showView = new YourReads.Views.UserShow({
+      model: model
+    });
+    this._swapView(showView);
+  },
+
+  requestsIndex: function () {
+    // alert('here')
+    var callback = this.requestsIndex.bind(this);
+    if (!this._requireSignedIn(callback)) return;
+
+    var collection = new YourReads.Collections.Requests();
+    collection.fetch();
+    var indexView = new YourReads.Views.RequestsIndex({
+      collection: collection
+    });
+    this._swapView(indexView);
   },
 
   _requireSignedIn: function (callback) {

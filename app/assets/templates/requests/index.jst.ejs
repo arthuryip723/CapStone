@@ -1,0 +1,11 @@
+<h1>Requests Index</h1>
+<ul>
+<% requests.each(function (request) { %>
+  <li>
+    <%= request.get("id") %>
+    <%= request.get("from_id") %>
+    <button class="accept-button" data-id="<%= request.get("id") %>">Accept</button>
+    <button class="reject-button" data-id="<%= request.get("id") %>">Reject</button>
+  </li>
+<% }); %>
+</ul>

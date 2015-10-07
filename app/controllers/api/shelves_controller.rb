@@ -5,7 +5,7 @@ module Api
     end
 
     def create
-      @shelf = current_user.shelves.create(shelf_params.merge({category: :custom}))
+      @shelf = current_user.shelves.new(shelf_params.merge({category: :custom}))
       if @shelf.save
         render :show
       else

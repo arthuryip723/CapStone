@@ -16,7 +16,7 @@ module Api
       # p "book_params"
       # p book_params
       # p params
-      @book = Book.create(book_params.merge(author: author))
+      @book = Book.new(book_params.merge(author: author))
       # @book = Book.create(book_params)
       if @book.save
         render 'show'

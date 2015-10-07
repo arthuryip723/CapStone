@@ -28,8 +28,8 @@ module Api
           return
         end
       end
-      
-      @shelving = Shelving.create(shelving_params)
+
+      @shelving = Shelving.new(shelving_params)
       if @shelving.save
         render :show
       else

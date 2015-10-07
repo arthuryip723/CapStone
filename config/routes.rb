@@ -16,6 +16,15 @@ Rails.application.routes.draw do
 
     end
     resources :shelvings, except: [:new, :edit]
+
+    resources :friendships, except: [:new, :edit]
+    resources :friend_requests, except: [:new, :edit] do
+      member do
+        post 'accept'
+        post 'reject'
+      end
+    end
+
     get "/search", to: "static_pages#search"
 
     resource :session, only: [:show, :create, :destroy]
