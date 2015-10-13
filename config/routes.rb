@@ -2,7 +2,8 @@ Rails.application.routes.draw do
   root to: "static_pages#root"
 
   resource :session, only: [:new, :create, :destroy]
-  resources :users, only: [:new, :create, :show]
+  resources :users, only: [:new, :create, :show] do
+  end
 
   namespace :api, defaults: { format: :json } do
     resources :books, except: [:new, :edit] do
@@ -28,7 +29,11 @@ Rails.application.routes.draw do
     get "/search", to: "static_pages#search"
 
     resource :session, only: [:show, :create, :destroy]
-    resources :users, only: [:index, :show, :create]
+    resources :users, only: [:index, :show, :create] do
+      collection do
+        get 'friends'
+      end
+    end
     # resources :ratings, except: [:new, :edit]
     # resources :items
     # resources :board_memberships

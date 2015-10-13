@@ -70,8 +70,10 @@ class User < ActiveRecord::Base
   end
 
   def friends
-    self.followees.joins(:tos).where("tos_users.from_id = ?", self.id)
-    # u.followees.joins(:tos).where("tos_users.from_id = ?", u.id)
+    # self.followees.joins("JOINS friendships tos_users ON tos_users.from_id = friendship.from_id").where("tos_users.to_id = ?", self.id)
+    # self.followees.joins("JOINS friendships f2 ON f2.from_id = friendship.to_id").where("f2.to_id = ?", self.id)
+    self.followees.joins("INNER JOIN friendships f2 ON f2.from_id = friendships.to_id").where("f2.to_id = ?", self.id)
+    # u.followees.joins(:tos).where("tos_users.from_id = ?", u.id)W
   end
 
   private
