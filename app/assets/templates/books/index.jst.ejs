@@ -13,10 +13,18 @@
           <%= book.escape('title') %>
         </a>
         by <a href="#/authors/<%= book.author().get('id') %>" class="author-name"><%= book.author().escape('name') %></a><br>
-        <%= book.escape('average_rating') ? book.escape('average_rating') : 0 %> stars
+        <!-- <%= book.escape('average_rating') ? book.escape('average_rating') : 0 %> stars -->
+        <div class="average-rating" data-score="<%= book.get('average_rating') %>"></div>
       </div>
-      <div class="left">
+      <!-- <div class="left">
         <a href="#/books/<%= book.get('id') %>/reviews/edit">Review</a>
+      </div> -->
+      <div class="left">
+        Rate this book
+        <div class="my-rate"
+            data-score="<%= book.currentUserReview().get('rating') %>"
+            data-book-id="<%= book.get('id') %>"
+            ></div>
       </div>
       <div class="book-shelves group">
         <select data-book-id="<%= book.get('id') %>" class="default-shelves-select">
@@ -53,3 +61,18 @@
 <div class="left">
 <a href="#/books/new" class="content-button">New Book</a> <a href="#/authors/new" class="content-button">New Author</a>
 </div>
+<script>
+  $('.average-rating').raty({
+    readOnly: true,
+    score: function () {
+      return $(this).attr('data-score');
+    },
+    noRatedMsg: "No rates yet."
+  });
+  // $('.my-rate').raty({
+  //   score: function () {
+  //     // debugger
+  //     return $(this).attr('data-score');
+  //   }
+  // });
+</script>

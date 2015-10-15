@@ -2,6 +2,9 @@ module Api
   class Api::BooksController < ApplicationController
     def index
       @books = Book.all.includes(:author)
+      @books.each do |book|
+        book.current_user_review = current_user.reviews.find_by_book_id(book.id) if current_user
+      end
       # render json: @books
     end
 

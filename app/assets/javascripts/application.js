@@ -13,6 +13,7 @@
 //= require jquery
 //= require jquery.serializejson.js
 //= require jquery_ujs
+//= require jquery.raty.js
 
 //= require underscore
 //= require backbone

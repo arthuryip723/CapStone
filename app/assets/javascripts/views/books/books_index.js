@@ -14,6 +14,24 @@ YourReads.Views.BooksIndex = Backbone.View.extend({
   },
   render: function () {
     this.$el.html(this.template({books: this.collection, shelves: this.shelves}));
+    var that = this;
+    this.$el.find('.my-rate').raty({
+      score: function () {
+        // debugger
+        return $(this).attr('data-score');
+      },
+      click: function (score, evt) {
+        // alert(score);
+        var $div = $(evt.currentTarget);
+        // debugger
+        var review = that.collection.get($(this).data("book-id")).currentUserReview();
+        review.save({rating: score}, {
+          success: function () {
+            alert("Successfully updated review!");
+          }
+        });
+      }
+    });
     return this;
   },
   toggleShelf: function (event) {
@@ -30,7 +48,7 @@ YourReads.Views.BooksIndex = Backbone.View.extend({
           // debugger
           // shelf.shelvings().add(model);
           // that.collection.trigger('update', that.collection);
-          alert('Successfuly added to book shelf!');
+          alert('Successfully added to book shelf!');
         }
       });
     } else {

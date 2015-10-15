@@ -21,3 +21,9 @@ if include_reviews
     end
   end
 end
+
+if include_current_user_review && book.current_user_review
+  json.current_user_review do
+    json.extract! book.current_user_review, :id, :user_id, :book_id, :rating
+  end
+end

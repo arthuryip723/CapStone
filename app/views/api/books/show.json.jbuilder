@@ -5,7 +5,7 @@
 # # json.author json.partial!('api/authors/author', author: @book.author)
 # json.author @book.author
 
-json.partial! 'api/books/book', book: @book, include_reviews: true, include_author: true;
+json.partial! 'api/books/book', book: @book, include_reviews: true, include_author: true, include_current_user_review: false;
 if @current_user_review
   json.current_user_review do
     (json.extract! @current_user_review, :id, :user_id, :book_id, :content, :rating)

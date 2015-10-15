@@ -56,11 +56,11 @@ ul {
   list-style: none;
 }
 
-img {
+/*img {
   display: block;
   width: 100%;
   height: auto;
-}
+}*/
 
 .book-list a:hover {
   text-decoration: underline;
