@@ -7,7 +7,7 @@
 <ul class="book-list">
   <% books.each(function (book) { %>
     <li class="book-list-item group">
-      <a href="#/books/<%= book.get('id') %>" class="book-cover"><img src="<%= book.get('image_url') %>"></a>
+      <a href="#/books/<%= book.get('id') %>" class="book-cover"><img class="img" src="<%= book.get('image_url') %>"></a>
       <div class="book-content">
         <a href="#/books/<%= book.get('id') %>" class="book-title" >
           <%= book.escape('title') %>
@@ -27,33 +27,36 @@
             ></div>
       </div>
       <div class="book-shelves group">
-        <select data-book-id="<%= book.get('id') %>" class="default-shelves-select">
-          <option disabled selected>-- select a shelf --</option>
-          <% shelves.defaultShelves().each(function (shelf) { %>
-            <option value="<%= shelf.get('id') %>"
-              <% if (shelf.books().get(book.get('id'))) { %>
-                selected
-              <% } %>
-              >
-              <%= shelf.get('name') %>
-            </option>
-          <% }); %>
-        </select>
-        <ul class="custom-shelves-list">
-          <% shelves.customShelves().each(function (shelf) { %>
-            <li>
-              <input type="checkbox" name="custom_shelf"
-                data-book-id="<%= book.get('id') %>"
-                data-shelf-id="<%= shelf.get('id') %>"
-                value="<%= shelf.get('name') %>"
+        <button class="toggle-shelves-panel" data-book-id="<%= book.get("id") %>">Shelves</button>
+        <div class="shelves-panel" id="shelves-for-book-<%= book.get('id') %>">
+          <select data-book-id="<%= book.get('id') %>" class="default-shelves-select">
+            <option disabled selected>-- select a shelf --</option>
+            <% shelves.defaultShelves().each(function (shelf) { %>
+              <option value="<%= shelf.get('id') %>"
                 <% if (shelf.books().get(book.get('id'))) { %>
-                  checked
+                  selected
                 <% } %>
-              >
-              <%= shelf.get('name') %>
-            </li>
-          <% }); %>
-        </ul>
+                >
+                <%= shelf.get('name') %>
+              </option>
+            <% }); %>
+          </select>
+          <ul class="custom-shelves-list">
+            <% shelves.customShelves().each(function (shelf) { %>
+              <li>
+                <input type="checkbox" name="custom_shelf"
+                  data-book-id="<%= book.get('id') %>"
+                  data-shelf-id="<%= shelf.get('id') %>"
+                  value="<%= shelf.get('name') %>"
+                  <% if (shelf.books().get(book.get('id'))) { %>
+                    checked
+                  <% } %>
+                >
+                <%= shelf.get('name') %>
+              </li>
+            <% }); %>
+          </ul>
+        </div>
       </div>
     </li>
   <% }); %>

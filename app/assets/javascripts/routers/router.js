@@ -24,11 +24,11 @@ YourReads.Routers.Router = Backbone.Router.extend({
     this.$rootEl = options.$rootEl;
     // figure out what I should do here
     this._shelves = new YourReads.Collections.Shelves();
-    // this._shelves.fetch();
   },
   index: function () {
     var callback = this.index.bind(this);
     if (!this._requireSignedIn(callback)) return;
+    this._shelves.fetch();
     // debugger
     this._clearShelves();
     this.books.fetch();

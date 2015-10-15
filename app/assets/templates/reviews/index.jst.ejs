@@ -2,7 +2,7 @@
 <ul class="review-list">
 <% reviews.each(function (review){ %>
   <li class="review-list-item group">
-    <a href="#/users/<%= review.user().get('id') %>" class="user-thumb"><img src="<%= review.user().get('image_url') %>"></a>
+    <a href="#/users/<%= review.user().get('id') %>" class="user-thumb"><img class="img" src="<%= review.user().get('image_url') %>"></a>
     <div class="review-content">
       <div class="review-rating"><a href="#/users/<%= review.user().get('id') %>" class="reviewer-email"><%= review.user().get('email') %></a>
       rated it <%= review.get('rating') %> stars</div>

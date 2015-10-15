@@ -2,7 +2,7 @@
 <!-- <div>by <a href="#/authors/<%= book.author().get('id') %>"><%= book.author().escape('name') %></a>
 </div> -->
 <div class="review-edit-book group">
-  <a href="#/books/<%= book.get('id') %>" class="book-cover"><img src="<%= book.get('image_url') %>"></a>
+  <a href="#/books/<%= book.get('id') %>" class="book-cover"><img class="img" src="<%= book.get('image_url') %>"></a>
   <div class="book-content">
     <a href="#/books/<%= book.get('id') %>" class="book-title" >
       <%= book.escape('title') %>

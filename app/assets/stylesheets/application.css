@@ -62,6 +62,12 @@ ul {
   height: auto;
 }*/
 
+.img {
+  display: block;
+  width: 100%;
+  height: auto;
+}
+
 .book-list a:hover {
   text-decoration: underline;
 }
@@ -486,14 +492,14 @@ textarea {
 .shelf-detail-view .default-shelves-select,
 .search-view .default-shelves-select,
 .books-index-view .default-shelves-select {
-  float: left;
+  /*float: left;*/
 }
 
 .shelf-detail-view .custom-shelves-list,
 .search-view .custom-shelves-list,
 .books-index-view .custom-shelves-list {
-  float: left;
-  margin: 0 0 0 10px;
+  /*float: left;
+  margin: 0 0 0 10px;*/
 }
 
 .siteheader {
@@ -553,4 +559,15 @@ textarea {
 
 .shelf-detail-view .default-shelves-select {
   margin: 0 0 0 10px;
+}
+
+.shelves-panel {
+  display: none;
+  position: absolute;
+  background: white;
+  z-index: 1;
+}
+
+.book-shelves {
+  position: relative;
 }

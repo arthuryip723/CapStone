@@ -4,7 +4,9 @@ YourReads.Views.BooksIndex = Backbone.View.extend({
   className: 'books-index-view',
   events: {
     'change select': 'addToShelf',
-    'change :checkbox': 'toggleShelf'
+    'change :checkbox': 'toggleShelf',
+    'click .toggle-shelves-panel': 'toggleShelvesPanel',
+    // 'click button': 'toggleShelvesPanel'
   },
   initialize: function (options) {
     this.shelves = options.shelves
@@ -89,6 +91,14 @@ YourReads.Views.BooksIndex = Backbone.View.extend({
       }
     });
 
+  },
+  toggleShelvesPanel: function (event) {
+    // alert("here")
+    // debugger
+    var $button = $(event.currentTarget);
+    var bookId = $button.data('book-id');
+    var $panel = this.$el.find("#shelves-for-book-" + bookId);
+    $panel.toggle();
   }
   // Need to use composite view here to add book list-item into the view
 });
