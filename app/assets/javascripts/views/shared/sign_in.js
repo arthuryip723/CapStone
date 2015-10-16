@@ -5,8 +5,11 @@ YourReads.Views.SignIn = Backbone.View.extend({
     // alert("here")
   },
 
+  className: "signin-view",
+
   events: {
-    "submit form": "submit"
+    "submit form": "submit",
+    // "click demo-signin": "demoSignin"
   },
 
   template: JST['shared/sign_in'],
@@ -39,5 +42,18 @@ YourReads.Views.SignIn = Backbone.View.extend({
     } else {
       Backbone.history.navigate('', {trigger: true});
     }
-  }
+  },
+  // demoSignin: function (event) {
+  //   event.preventDefault();
+  //   var $form = $(event.currentTarget);
+  //   var formData = $form.serializeJSON().user;
+  //
+  //   YourReads.currentUser.signIn({
+  //     email: formData.email,
+  //     password: formData.password,
+  //     error: function () {
+  //       alert("Wrong username/password combination. Please try again!");
+  //     }
+  //   });
+  // },
 });

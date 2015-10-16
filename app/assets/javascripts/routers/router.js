@@ -89,6 +89,9 @@ YourReads.Routers.Router = Backbone.Router.extend({
   },
 
   shelvesIndex: function (callback) {
+    var callback = this.shelvesIndex.bind(this);
+    if (!this._requireSignedIn(callback)) return;
+
     var shelves = new YourReads.Collections.Shelves();
     var view = new YourReads.Views.ShelvesIndex({collection: shelves, callback: callback});
     this._shelves = shelves;
@@ -129,6 +132,8 @@ YourReads.Routers.Router = Backbone.Router.extend({
   },
 
   search: function () {
+    var callback = this.search.bind(this);
+    if (!this._requireSignedIn(callback)) return;
     this._clearShelves();
     var view = new YourReads.Views.Search({shelves: this._shelves});
     this._swapView(view);

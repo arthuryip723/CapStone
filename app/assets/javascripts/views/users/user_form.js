@@ -3,6 +3,8 @@ YourReads.Views.UserForm = Backbone.View.extend({
     this.listenTo(this.model, "sync change", this.render);
   },
 
+  className: 'signup-view',
+
   template: JST['users/form'],
 
   events: {

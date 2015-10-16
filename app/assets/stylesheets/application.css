@@ -571,3 +571,11 @@ textarea {
 .book-shelves {
   position: relative;
 }
+
+.login-view {
+  /*text-align: center;*/
+}
+
+.login-view h2 {
+
+}

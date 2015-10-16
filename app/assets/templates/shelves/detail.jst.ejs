@@ -14,30 +14,32 @@
       <div class="left">
         <a href="#/books/<%= book.get('id') %>/reviews/edit">Review</a>
       </div>
-      <select data-book-id="<%= book.get('id') %>" class="default-shelves-select">
-        <% shelves.defaultShelves().each(function (shelf) { %>
-          <option value="<%= shelf.get('id') %>"
-            <% if (shelf.books().get(book.get('id'))) { %>
-              selected
-            <% } %>
-            ><%= shelf.escape('name') %></option>
-        <% }); %>
-      </select>
-      <ul class="custom-shelves-list">
-        <% shelves.customShelves().each(function (shelf) { %>
-          <li>
-            <input type="checkbox" name="custom_shelf"
-              data-book-id="<%= book.get('id') %>"
-              data-shelf-id="<%= shelf.get('id') %>"
-              value="<%= shelf.get('name') %>"
+      <!-- <div class="left" style="padding-left: 10px;"> -->
+        <select data-book-id="<%= book.get('id') %>" class="default-shelves-select left">
+          <% shelves.defaultShelves().each(function (shelf) { %>
+            <option value="<%= shelf.get('id') %>"
               <% if (shelf.books().get(book.get('id'))) { %>
-                checked
+                selected
               <% } %>
-            >
-            <%= shelf.get('name') %>
-          </li>
-        <% }); %>
-      </ul>
+              ><%= shelf.escape('name') %></option>
+          <% }); %>
+        </select>
+        <ul class="custom-shelves-list left" style="padding-left: 10px;">
+          <% shelves.customShelves().each(function (shelf) { %>
+            <li>
+              <input type="checkbox" name="custom_shelf"
+                data-book-id="<%= book.get('id') %>"
+                data-shelf-id="<%= shelf.get('id') %>"
+                value="<%= shelf.get('name') %>"
+                <% if (shelf.books().get(book.get('id'))) { %>
+                  checked
+                <% } %>
+              >
+              <%= shelf.get('name') %>
+            </li>
+          <% }); %>
+        </ul>
+      <!-- </div> -->
     </li>
   <% }) %>
 </ul>
